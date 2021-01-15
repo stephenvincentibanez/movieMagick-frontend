@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 class EditUser extends Component {
+
     state = {
         username: '',
         registrationErrors: ''
     }
+
     handleSubmit = (e) => {
         e.preventDefault()
         const {username} = this.state
@@ -23,11 +25,24 @@ class EditUser extends Component {
             console.log("registration error", error)
         })
     }
+
     handleChange = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
+
+    deleteUser = () => {
+        const {id} = this.props.user
+        axios.delete(`http://localhost:3001/users/${id}`)
+        .then(response => {
+            if(response.data.status === 'destroyed'){
+                this.props.handleLogout()
+                this.props.history.push("/")
+            }
+        })
+    }
+
     render() {
         return (
             <div>
@@ -41,6 +56,7 @@ class EditUser extends Component {
                         onChange={this.handleChange}
                     />
                     <button type="submit">Save Changes</button>
+                    <button onClick={this.deleteUser}>Delete User</button>
                 </form>
             </div>
         );
