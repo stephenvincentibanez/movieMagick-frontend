@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Dashboard = (props) => {
+const Browse = (props) => {
     return (
         <div>
-            <h1> Dashboard </h1>
+            <h1> Browse </h1>
             <h1> Status: {props.loggedInStatus} </h1>
         </div>
     );
 }
 
-export default Dashboard;
+export default Browse;

@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import axios from 'axios'
 import Home from './components/Home'
-import Dashboard from  './components/Dashboard'
+import Browse from  './components/Browse'
 
 class App extends Component {
   constructor() {
@@ -62,7 +62,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path={'/'} render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>)} />
-            <Route exact path={'/dashboard'} render={props => ( <Dashboard {...props} loggedInStatus={this.state.loggedInStatus}/>)}/>
+            <Route exact path={'/browse'} render={props => ( <Browse {...props} loggedInStatus={this.state.loggedInStatus}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
