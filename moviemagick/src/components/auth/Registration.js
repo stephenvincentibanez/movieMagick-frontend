@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form'
 
 class Registration extends Component {
     constructor(props){
@@ -45,12 +47,24 @@ class Registration extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type='username' name='username' placeholder='Username' value={this.state.username} onChange={this.handleChange} required />
-                    <input type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required />
-                    <input type='password' name='password_confirmation' placeholder='Password confirmation' value={this.state.password_confirmation} onChange={this.handleChange} required />
-                    <button type='submit' >Register</button>
-                </form>
+                <h3> Register </h3>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicUsername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="username" name="username" placeholder="Enter username" value={this.state.username} onChange={this.handleChange} required/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPasswordConfirmation">
+                        <Form.Label>Password Confirmation</Form.Label>
+                        <Form.Control type="password" name="password_confirmation" placeholder="Password confirmation" value={this.state.password_confirmation} onChange={this.handleChange} required/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Register
+                    </Button>
+                </Form>
             </div>
         );
     } 

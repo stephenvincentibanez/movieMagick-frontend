@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 class EditUser extends Component {
-
-    state = {
-        username: '',
-        registrationErrors: ''
+    constructor(props){
+        super(props)
+        this.state = {
+            username: props.user.username,
+            registrationErrors: ""
+        }
     }
 
     handleSubmit = (e) => {

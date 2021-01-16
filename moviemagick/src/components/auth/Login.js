@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button';
+
 
 class Login extends Component {
     constructor(props){
@@ -43,11 +46,20 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input type='username' name='username' placeholder='Username' value={this.state.username} onChange={this.handleChange} required />
-                    <input type='password' name='password' placeholder='Password' value={this.state.password} onChange={this.handleChange} required />
-                    <button type='submit' >Login</button>
-                </form>
+                <h3> Login </h3>
+                <Form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicUsername">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control type="username" name="username" placeholder="Enter username" value={this.state.username} onChange={this.handleChange} required/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                        Register
+                    </Button>
+                </Form>
             </div>
         );
     } 

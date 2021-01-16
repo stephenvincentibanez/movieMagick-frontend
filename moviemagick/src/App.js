@@ -5,6 +5,8 @@ import axios from 'axios'
 import Home from './components/Home'
 import Browse from  './components/Browse'
 import EditUser from './components/EditUser';
+import MyReviews from './components/MyReviews'
+import Watchlist from './components/Watchlist'
 
 class App extends Component {
   constructor() {
@@ -65,6 +67,8 @@ class App extends Component {
             <Route exact path={'/'} render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>)} />
             <Route exact path={'/browse'} render={props => ( <Browse {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus}/>)}/>
             <Route exact path={'/edit_user'} render={props => (<EditUser {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>)}/>
+            <Route exact path={'/myreviews'} render={props => (<MyReviews {...props}/>)}/>
+            <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
