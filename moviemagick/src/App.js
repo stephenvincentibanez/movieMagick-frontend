@@ -66,7 +66,7 @@ class App extends Component {
         <NavBar/>
         <BrowserRouter>
           <Switch>
-            <Route exact path={'/'} render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>)} />
+            <Route exact path={'/'} render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/>)} />
             <Route exact path={'/browse'} render={props => ( <Browse {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus}/>)}/>
             <Route exact path={'/edit_user'} render={props => (<EditUser {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (<MyReviews {...props}/>)}/>

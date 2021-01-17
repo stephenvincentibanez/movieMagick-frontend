@@ -16,12 +16,13 @@ class EditUser extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const {username, password} = this.state
+        const {username, password, password_confirmation} = this.state
         const {id} = this.props.user
         axios.patch(`http://localhost:3001/users/${id}`, {
             user: {
                 username: username,
-                password: password
+                password: password,
+                password_confirmation: password_confirmation
             }
         }, 
         { withCredentials: true }
@@ -63,6 +64,10 @@ class EditUser extends Component {
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPasswordConfirmation">
+                        <Form.Label>Password Confirmation</Form.Label>
+                        <Form.Control type="password" name="password_confirmation" placeholder="Password confirmation" value={this.state.password_confirmation} onChange={this.handleChange} required/>
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit

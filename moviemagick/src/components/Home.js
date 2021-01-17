@@ -37,15 +37,15 @@ class Home extends Component {
                 <Jumbotron>
                     <h1> Welcome to MovieMagick </h1>
                     <p> Welcome! You can use this app to keep track of and review what movies you've seen and keep a watchlist going of movies you want to see.</p>
-                    {/* <h1> Status: {this.props.loggedInStatus} </h1> */}
                 </Jumbotron>
-            <Container>
-                <Row>
-                    <Col> <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/> </Col>                
-                    <Col> <Login handleSuccessfulAuth={this.handleSuccessfulAuth}/> </Col>
-                </Row>
-                {this.props.loggedInStatus === "LOGGED_IN" ? <Button onClick={() => this.handleLogoutClick()}> Logout </Button> : null}
-            </Container>
+                <Container>
+                    {this.props.loggedInStatus === "LOGGED_IN" ? <h5>Currently logged in as {this.props.user.username}</h5> : null}
+                    <Row>
+                        <Col> <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/> </Col>                
+                        <Col> <Login handleSuccessfulAuth={this.handleSuccessfulAuth} loggedInStatus={this.props.loggedInStatus}/> </Col>
+                    </Row>
+                    {this.props.loggedInStatus === "LOGGED_IN" ? <Button onClick={() => this.handleLogoutClick()}> Logout </Button> : null}
+                </Container>
             </>
         );
     }

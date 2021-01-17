@@ -56,9 +56,7 @@ class Login extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Login
-                    </Button>
+                    {this.props.loggedInStatus === "NOT_LOGGED_IN" ? <Button variant="primary" type="submit">Login</Button> : <Button disabled> Login </Button>}
                 </Form>
             </div>
         );
