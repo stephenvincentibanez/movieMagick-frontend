@@ -7,6 +7,7 @@ import Browse from  './components/Browse'
 import EditUser from './components/EditUser';
 import MyReviews from './components/MyReviews'
 import Watchlist from './components/Watchlist'
+import NavBar from './components/NavBar'
 
 class App extends Component {
   constructor() {
@@ -62,6 +63,7 @@ class App extends Component {
     console.log(this.state.user)
     return (
       <div className="App">
+        <NavBar/>
         <BrowserRouter>
           <Switch>
             <Route exact path={'/'} render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus}/>)} />

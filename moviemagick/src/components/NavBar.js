@@ -9,12 +9,13 @@ import React from 'react';
 const NavBar = () => {
     return (
         <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">MovieMagick</Navbar.Brand>
+            <Navbar.Brand href="/">MovieMagick</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#browse">Browse</Nav.Link>
-                <Nav.Link href="#myreviews">MyReviews</Nav.Link>
-                <Nav.Link href="#watchlist">Watchlist</Nav.Link>
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/browse">Browse</Nav.Link>
+                <Nav.Link href="/myreviews">MyReviews</Nav.Link>
+                <Nav.Link href="/watchlist">Watchlist</Nav.Link>
+                <Nav.Link href='/edit_user' >Settings</Nav.Link>
 
             </Nav>
             <Form inline>
