@@ -40,7 +40,7 @@ class Home extends Component {
                 </Jumbotron>
                 <Container>
                     {this.props.loggedInStatus === "LOGGED_IN" ? <h5>Currently logged in as {this.props.user.username}</h5> : null}
-                    <Row>
+                    <Row >
                         <Col> <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/> </Col>                
                         <Col> <Login handleSuccessfulAuth={this.handleSuccessfulAuth} loggedInStatus={this.props.loggedInStatus}/> </Col>
                     </Row>
