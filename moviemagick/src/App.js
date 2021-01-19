@@ -18,7 +18,9 @@ class App extends Component {
       loggedInStatus: 'NOT_LOGGED_IN',
       user: {},
       movies: [],
-      selectedMovie: {}
+      selectedMovie: {},
+      watchlist: [],
+      reviewedMovies: []
     }
 
     this.handleLogin = this.handleLogin.bind(this)
