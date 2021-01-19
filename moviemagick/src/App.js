@@ -15,7 +15,8 @@ class App extends Component {
 
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
-      user: {}
+      user: {},
+      movies: []
     }
 
     this.handleLogin = this.handleLogin.bind(this)
@@ -43,6 +44,12 @@ class App extends Component {
 
   componentDidMount(){
     this.checkLoginStatus()
+    fetch('http://localhost:3001/movies')
+    .then(r => r.json())
+    // .then(console.log)
+    .then(movies => this.setState({
+      movies: movies
+    }))
   }
 
   handleLogout(){
@@ -67,10 +74,11 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path={'/'} render={props => ( <Home {...props} handleLogin={this.handleLogin} handleLogout={this.handleLogout} loggedInStatus={this.state.loggedInStatus} user={this.state.user}/>)} />
-            <Route exact path={'/browse'} render={props => ( <Browse {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus}/>)}/>
+            <Route exact path={'/browse'} render={props => ( <Browse {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} movies={this.state.movies}/>)}/>
             <Route exact path={'/edit_user'} render={props => (<EditUser {...props} user={this.state.user} loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (<MyReviews {...props}/>)}/>
             <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/>
+            {/* <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/> */}
           </Switch>
         </BrowserRouter>
       </div>
