@@ -20,7 +20,7 @@ class App extends Component {
       movies: [],
       selectedMovie: {},
       watchlist: [],
-      reviewedMovies: []
+      reviews: []
     }
 
     this.handleLogin = this.handleLogin.bind(this)
@@ -101,7 +101,7 @@ class App extends Component {
                 handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (<MyReviews {...props}/>)}/>
             <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/>
-            <Route path={`/movies`} render={props => (<Movie {...props} movie={this.state.selectedMovie}/>)}/>
+            <Route path={`/movies`} render={props => (<Movie {...props} movie={this.state.selectedMovie} user={this.state.user}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
