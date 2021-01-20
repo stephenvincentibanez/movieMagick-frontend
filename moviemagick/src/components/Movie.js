@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Review from './Review'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
@@ -38,12 +39,32 @@ class Movie extends Component {
             [e.target.name]: e.target.value
         })
     }
+
+    handleWatchlist = (movie) => {
+        if(!this.props.watchlist.includes(movie)){
+            this.props.handleAddToWatchlist(movie)
+        }
+        else{
+            this.props.handleRemoveFromWatchlist(movie)
+        }
+    }
+
+    renderReviews = () => {
+        return this.props.reviews.map(review => {
+            if(review.movie_id === this.props.movie.id){
+                return (
+                    <Review review={review} user={this.props.user}/>
+                )
+            }
+        })
+    }
+
     render(){
         return (
             <Container>
                     <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
-                    <Button>Add to Watchlist</Button><br/>
-                    <img src={this.props.movie.poster}/>
+                    <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button><br/><br/>
+                    <img src={this.props.movie.poster}/><br/><br/>
                         <h5>Director: {this.props.movie.director}</h5>
                         <h5>Writer: {this.props.movie.writer}</h5>
                         <h5>Genres: {this.props.movie.genres}</h5>
@@ -57,17 +78,19 @@ class Movie extends Component {
                         <Form.Group>
                             <Form.Label>Rating</Form.Label>
                             <Form.Control as="select" type="rating" name="rating" value={this.state.rating} onChange={this.handleChange} required >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                                <option>1 star</option>
+                                <option>2 stars</option>
+                                <option>3 stars</option>
+                                <option>4 stars</option>
+                                <option>5 stars</option>
                             </Form.Control>    
                             <Form.Label>Review</Form.Label>
                             <Form.Control as="textarea" name="text" rows={5} value={this.state.text} onChange={this.handleChange} required/>
                             <Button onClick={this.handleSubmit}>Submit Review</Button>
                         </Form.Group>
                     </Form>
+                    <h3>User Reviews</h3>
+                    {this.renderReviews()}
             </Container>
         );
     }

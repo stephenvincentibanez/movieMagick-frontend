@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
+import Row from 'react-bootstrap/Row'
 
 
 class Browse extends Component {
@@ -37,7 +38,9 @@ class Browse extends Component {
                 {/* <h1> Status: {this.props.loggedInStatus} </h1> */}
                 <h2> Welcome {this.props.user.username}!</h2>
                 <Container>
-                    {this.renderCards()}
+                    <Row>
+                        {this.renderCards()}
+                    </Row>
                 </Container>
             </div>
         );

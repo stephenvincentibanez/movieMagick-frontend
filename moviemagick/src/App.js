@@ -51,7 +51,12 @@ class App extends Component {
     fetch('http://localhost:3001/movies')
     .then(r => r.json())
     .then(movies => this.setState({
-      movies: movies
+      movies
+    }))
+    fetch('http://localhost:3001/reviews')
+    .then(r => r.json())
+    .then(reviews => this.setState({
+      reviews
     }))
   }
 
@@ -75,8 +80,19 @@ class App extends Component {
     })
   }
 
+  handleAddToWatchlist = (movie) => {
+    this.setState({
+      watchlist: [...this.state.watchlist, movie]
+    })
+  }
+
+  handleRemoveFromWatchlist = (movie) => {
+    this.setState({
+      watchlist: [...this.state.watchlist.filter(movie => movie !== movie)]
+    })
+  }
+
   render() {
-    console.log(this.state.user)
     return (
       <div className="App">
         <NavBar/>
@@ -99,9 +115,20 @@ class App extends Component {
                 user={this.state.user} 
                 loggedInStatus={this.state.loggedInStatus} 
                 handleLogout={this.handleLogout}/>)}/>
-            <Route exact path={'/myreviews'} render={props => (<MyReviews {...props}/>)}/>
+            <Route exact path={'/myreviews'} render={props => (
+              <MyReviews {...props} 
+                reviews={this.state.reviews}
+                movies={this.state.movies}
+                user={this.state.user}/>)}/>
             <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/>
-            <Route path={`/movies`} render={props => (<Movie {...props} movie={this.state.selectedMovie} user={this.state.user}/>)}/>
+            <Route path={`/movies`} render={props => (
+              <Movie {...props} 
+                movie={this.state.selectedMovie} 
+                user={this.state.user} 
+                reviews={this.state.reviews} 
+                handleAddToWatchlist={this.handleAddToWatchlist}
+                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}
+                watchlist={this.state.watchlist}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
