@@ -16,7 +16,7 @@ class App extends Component {
 
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
-      user: {},
+      user: {reviews: []},
       movies: [],
       selectedMovie: {},
       watchlist: [],
@@ -117,8 +117,8 @@ class App extends Component {
                 handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (
               <MyReviews {...props} 
-                reviews={this.state.reviews}
-                movies={this.state.movies}
+                // reviews={this.state.reviews}
+                // movies={this.state.movies}
                 user={this.state.user}/>)}/>
             <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/>
             <Route path={`/movies`} render={props => (
