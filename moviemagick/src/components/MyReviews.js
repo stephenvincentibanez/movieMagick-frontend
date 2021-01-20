@@ -4,21 +4,11 @@ import ReviewDetails from './ReviewDetails'
 
 const MyReviews = (props) => {
 
-    // const renderReviews = () => {
-    //     return props.reviews.map(review => {
-    //         if(review.user_id === props.user.id){
-    //             return(
-    //                 <ReviewDetails review={review} user={props.user} key={review.id}/>
-    //             )
-    //         }
-    //     })
-    // }
-
     const renderReviews = () => {
-        // debugger
         return props.user.reviews.map(review => {
+            // debugger
                 return(
-                    <ReviewDetails review={review} user={props.user} key={review.id}/>
+                    <ReviewDetails review={review} key={review.id}/>
                 )
             }
         )

@@ -6,6 +6,10 @@ import Row from 'react-bootstrap/Row'
 
 class Browse extends Component {
 
+    state={
+        display: false
+    }
+
     handleEditUserClick = () => {
         this.props.history.push('/edit_user')
     }
@@ -16,11 +20,17 @@ class Browse extends Component {
         this.props.history.push(`/movies/${movie.id}`)
         // console.log(id)
     }
+
+    handleHover = () => {
+        this.setState({
+            display: true
+        })
+    }
     
     renderCards = () => {
         return this.props.movies.map(movie => {
             return(
-            <Card onClick={() => this.handleOnClick(movie)} style={{width: '18rem'}} key={movie.id}>
+            <Card onClick={() => this.handleOnClick(movie)} onMouseEnter={this.handleHover} style={{width: '18rem'}} key={movie.id}>
                 <Card.Img variant="top" src={movie.poster}/>
                 <Card.Body>
                     <Card.Title> {movie.title} </Card.Title>

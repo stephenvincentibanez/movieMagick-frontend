@@ -29,7 +29,8 @@ class App extends Component {
 
   checkLoginStatus(){
     axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(response => {
-      console.log('logged in?', response)
+      console.log('logged in?', response.data.user)
+      // debugger
       if (response.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN'){
         this.setState({
           loggedInStatus: 'LOGGED_IN',
@@ -81,6 +82,18 @@ class App extends Component {
   }
 
   handleAddToWatchlist = (movie) => {
+    // axios.post('http://localhost:3001/watchlist', {
+    //         watchlist: movie
+    //     },
+    //     { withCredentials: true }
+    //     ).then(response => {
+    //         if (response.data.status === 'created'){
+    //             // this.props.handleSuccessfulAuth(response.data)
+    //         }
+    //     }).catch(error => {
+    //         console.log('review creation error', error)
+    //     })
+
     this.setState({
       watchlist: [...this.state.watchlist, movie]
     })
@@ -95,7 +108,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <NavBar/>
+        {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus}/> : null}
         <BrowserRouter>
           <Switch>
             <Route exact path={'/'} render={props => ( 
