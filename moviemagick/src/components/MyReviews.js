@@ -1,5 +1,6 @@
 import React from 'react';
-import ReviewDetails from './Review'
+import ReviewDetails from './ReviewDetails'
+
 
 const MyReviews = (props) => {
 
