@@ -1,13 +1,15 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card'
 
 const Review = (props) => {
     return (
-        <div>
-            <h5>{props.user.username}</h5>
-            {/* <h5>{props.review.user}</h5> */}
-            <h5>{props.review.rating}</h5>
-            <p>{props.review.text}</p>
-        </div>
+            <Card style={{width: '18rem'}}>
+                <Card.Body>
+                    <Card.Title>User: {props.user.username} </Card.Title>
+                    <Card.Text> Rating: {props.review.rating}</Card.Text>
+                    <Card.Text> Review: {props.review.text} </Card.Text>
+                </Card.Body>
+            </Card>
     );
 }
 

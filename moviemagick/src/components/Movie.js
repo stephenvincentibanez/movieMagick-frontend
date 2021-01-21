@@ -51,7 +51,7 @@ class Movie extends Component {
 
     renderReviews = () => {
         return this.props.reviews.map(review => {
-            if(review.movie_id === this.props.movie.id){
+            if(review.movie.id === this.props.movie.id){
                 return (
                     <Review review={review} user={this.props.user}/>
                 )
@@ -60,12 +60,15 @@ class Movie extends Component {
     }
 
     render(){
+        console.log(this.props)
         return (
             <Container>
-                    <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
-                    {/* {this.props.user.watchlists.includes(this.props.selectedMovie) ? <Button onClick={() => this.handleWatchlist}> Remove from Watchlist </Button> : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> } */}
-                    <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button><br/><br/>
-                    <img src={this.props.movie.poster}/><br/><br/>
+                <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
+                {this.props.user.watchlists.includes(this.props.movie) ? <Button onClick={() => this.handleWatchlist}> Remove from Watchlist </Button> : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
+                {/* <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button><br/><br/> */}
+                <Row>
+                    <Col>
+                        <br/>
                         <h5>Director: {this.props.movie.director}</h5>
                         <h5>Writer: {this.props.movie.writer}</h5>
                         <h5>Genres: {this.props.movie.genres}</h5>
@@ -73,6 +76,12 @@ class Movie extends Component {
                         <h5>Language: {this.props.movie.language}</h5>
                         <h5>Rated: {this.props.movie.rated}</h5>
                         <h5>Plot: {this.props.movie.plot}</h5>
+
+                    </Col>
+                    <Col>
+                    <img src={this.props.movie.poster}/><br/><br/>
+                    </Col>
+                </Row>
                     <br/>
                     <Form>
                         <h3> Leave a Review</h3>
@@ -90,7 +99,7 @@ class Movie extends Component {
                             <Button onClick={this.handleSubmit}>Submit Review</Button>
                         </Form.Group>
                     </Form>
-                    <h3>User Reviews</h3>
+                    {this.props.movie.reviews > 0 ? <h3>User Reviews</h3> : null}
                     {this.renderReviews()}
             </Container>
         );

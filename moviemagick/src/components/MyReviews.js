@@ -1,5 +1,9 @@
 import React from 'react';
 import ReviewDetails from './ReviewDetails'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
+
 
 
 const MyReviews = (props) => {
@@ -16,7 +20,11 @@ const MyReviews = (props) => {
     return (
         <div>
             <h1>MyReviews</h1>
-            {renderReviews()}
+            <Container>
+                <Row>
+                    {renderReviews()}
+                </Row>
+            </Container>
         </div>
     );
 }

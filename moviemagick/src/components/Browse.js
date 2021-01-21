@@ -43,8 +43,8 @@ class Browse extends Component {
         return (
             <div>
                 <h1> Browse </h1>
-                {/* <h1> Status: {this.props.loggedInStatus} </h1> */}
-                <h2> Welcome {this.props.user.username}!</h2>
+                <h5> Welcome {this.props.user.username}!</h5>
+                <br/>
                 <Container>
                     <Row>
                         {this.renderCards()}

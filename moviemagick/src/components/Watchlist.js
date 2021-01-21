@@ -1,19 +1,21 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+
 
 
 const Watchlist = (props) => {
 
-// const handleOnClick = (movie) => {
-//     this.props.handleMovieClick(movie)
-//     this.props.history.push(`/movies/${movie.id}`)
-// }
+    const handleOnClick = (movie) => {
+        props.handleMovieClick(movie)
+        props.history.push(`/movies/${movie.id}`)
+    }
 
     const renderWatchlist = () => {
-        debugger
         return props.user.watchlists.map(watchlist => {
             return (
-                <Card style={{width: '18rem'}} key={watchlist.id}>
+                <Card onClick={() => handleOnClick(watchlist)} style={{width: '18rem'}} key={watchlist.id}>
                     <Card.Img variant="top" src={watchlist.movie.poster}/>
                     <Card.Body>
                         <Card.Title> {watchlist.movie.title} </Card.Title>
@@ -28,7 +30,11 @@ const Watchlist = (props) => {
     return (
         <div>
             <h1>Watchlist</h1>
-            {renderWatchlist()}
+            <Container>
+                <Row>
+                    {renderWatchlist()}
+                </Row>
+            </Container>
         </div>
     );
 }

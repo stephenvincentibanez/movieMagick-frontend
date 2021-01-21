@@ -19,7 +19,6 @@ class App extends Component {
       user: {reviews: [], watchlists: []},
       movies: [],
       selectedMovie: {},
-      // watchlists: [],
       reviews: []
     }
 
@@ -30,7 +29,6 @@ class App extends Component {
   checkLoginStatus(){
     axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(response => {
       console.log('logged in?', response.data.user)
-      // debugger
       if (response.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN'){
         this.setState({
           loggedInStatus: 'LOGGED_IN',
@@ -59,11 +57,6 @@ class App extends Component {
     .then(reviews => this.setState({
       reviews
     }))
-    // fetch('http://localhost:3001/watchlists')
-    // .then(r => r.json())
-    // .then(watchlists => this.setState({
-    //   watchlists
-    // }))
   }
 
   handleLogout(){
@@ -98,16 +91,12 @@ class App extends Component {
         }).catch(error => {
             console.log('add watchlist error', error)
         })
-
-    // this.setState({
-    //   watchlist: [...this.state.watchlist, movie]
-    // })
   }
 
   handleRemoveFromWatchlist = (movie) => {
-    this.setState({
-      watchlist: [...this.state.watchlist.filter(movie => movie !== movie)]
-    })
+    // this.setState({
+    //   watchlist: [...this.state.watchlist.filter(movie => movie !== movie)]
+    // })
   }
 
   render() {
@@ -138,6 +127,7 @@ class App extends Component {
                 user={this.state.user}/>)}/>
             <Route exact path={'/watchlist'} render={props => (
               <Watchlist {...props}
+                handleMovieClick={this.handleMovieClick}
                 user={this.state.user}/>)}/>
             <Route path={`/movies`} render={props => (
               <Movie {...props} 
@@ -145,8 +135,7 @@ class App extends Component {
                 user={this.state.user} 
                 reviews={this.state.reviews} 
                 handleAddToWatchlist={this.handleAddToWatchlist}
-                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}
-                watchlist={this.state.watchlist}/>)}/>
+                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
           </Switch>
         </BrowserRouter>
       </div>
