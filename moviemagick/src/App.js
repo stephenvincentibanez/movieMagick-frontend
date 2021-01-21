@@ -16,7 +16,7 @@ class App extends Component {
 
     this.state = {
       loggedInStatus: 'NOT_LOGGED_IN',
-      user: {reviews: []},
+      user: {reviews: [], watchlists: []},
       movies: [],
       selectedMovie: {},
       // watchlists: [],

@@ -11,13 +11,13 @@ const Watchlist = (props) => {
 
     const renderWatchlist = () => {
         debugger
-        return props.user.watchlists.map(movie => {
+        return props.user.watchlists.map(watchlist => {
             return (
-                <Card style={{width: '18rem'}} key={movie.id}>
-                    <Card.Img variant="top" src={movie.poster}/>
+                <Card style={{width: '18rem'}} key={watchlist.id}>
+                    <Card.Img variant="top" src={watchlist.movie.poster}/>
                     <Card.Body>
-                        <Card.Title> {movie.title} </Card.Title>
-                        <Card.Text> {movie.plot} </Card.Text>
+                        <Card.Title> {watchlist.movie.title} </Card.Title>
+                        <Card.Text> {watchlist.movie.plot} </Card.Text>
                     </Card.Body>
                 </Card>
             )
