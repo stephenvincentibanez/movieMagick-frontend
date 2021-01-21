@@ -16,9 +16,7 @@ class Browse extends Component {
 
     handleOnClick = (movie) => {
         this.props.handleMovieClick(movie)
-        console.log(movie)
         this.props.history.push(`/movies/${movie.id}`)
-        // console.log(id)
     }
 
     handleHover = () => {

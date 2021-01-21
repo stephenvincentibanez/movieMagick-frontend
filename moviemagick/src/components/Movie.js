@@ -41,7 +41,7 @@ class Movie extends Component {
     }
 
     handleWatchlist = (movie) => {
-        if(!this.props.watchlist.includes(movie)){
+        if(!this.props.user.watchlists.includes(movie)){
             this.props.handleAddToWatchlist(movie)
         }
         else{
@@ -63,6 +63,7 @@ class Movie extends Component {
         return (
             <Container>
                     <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
+                    {/* {this.props.user.watchlists.includes(this.props.selectedMovie) ? <Button onClick={() => this.handleWatchlist}> Remove from Watchlist </Button> : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> } */}
                     <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button><br/><br/>
                     <img src={this.props.movie.poster}/><br/><br/>
                         <h5>Director: {this.props.movie.director}</h5>

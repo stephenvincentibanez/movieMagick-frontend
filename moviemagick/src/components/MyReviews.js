@@ -6,7 +6,6 @@ const MyReviews = (props) => {
 
     const renderReviews = () => {
         return props.user.reviews.map(review => {
-            // debugger
                 return(
                     <ReviewDetails review={review} key={review.id}/>
                 )

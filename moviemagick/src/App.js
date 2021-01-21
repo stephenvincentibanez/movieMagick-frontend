@@ -19,7 +19,7 @@ class App extends Component {
       user: {reviews: []},
       movies: [],
       selectedMovie: {},
-      watchlist: [],
+      // watchlists: [],
       reviews: []
     }
 
@@ -59,6 +59,11 @@ class App extends Component {
     .then(reviews => this.setState({
       reviews
     }))
+    // fetch('http://localhost:3001/watchlists')
+    // .then(r => r.json())
+    // .then(watchlists => this.setState({
+    //   watchlists
+    // }))
   }
 
   handleLogout(){
@@ -82,21 +87,21 @@ class App extends Component {
   }
 
   handleAddToWatchlist = (movie) => {
-    // axios.post('http://localhost:3001/watchlist', {
-    //         watchlist: movie
-    //     },
-    //     { withCredentials: true }
-    //     ).then(response => {
-    //         if (response.data.status === 'created'){
-    //             // this.props.handleSuccessfulAuth(response.data)
-    //         }
-    //     }).catch(error => {
-    //         console.log('review creation error', error)
-    //     })
+    axios.post('http://localhost:3001/watchlists', {
+            watchlist: {user_id: this.state.user.id, movie_id: movie.id}
+        },
+        { withCredentials: true }
+        ).then(response => {
+            if (response.data.status === 'created'){
+                // this.props.handleSuccessfulAuth(response.data)
+            }
+        }).catch(error => {
+            console.log('add watchlist error', error)
+        })
 
-    this.setState({
-      watchlist: [...this.state.watchlist, movie]
-    })
+    // this.setState({
+    //   watchlist: [...this.state.watchlist, movie]
+    // })
   }
 
   handleRemoveFromWatchlist = (movie) => {
@@ -130,10 +135,10 @@ class App extends Component {
                 handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (
               <MyReviews {...props} 
-                // reviews={this.state.reviews}
-                // movies={this.state.movies}
                 user={this.state.user}/>)}/>
-            <Route exact path={'/watchlist'} render={props => (<Watchlist {...props}/>)}/>
+            <Route exact path={'/watchlist'} render={props => (
+              <Watchlist {...props}
+                user={this.state.user}/>)}/>
             <Route path={`/movies`} render={props => (
               <Movie {...props} 
                 movie={this.state.selectedMovie} 
