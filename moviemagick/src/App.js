@@ -94,9 +94,15 @@ class App extends Component {
   }
 
   handleRemoveFromWatchlist = (movie) => {
-    // this.setState({
-    //   watchlist: [...this.state.watchlist.filter(movie => movie !== movie)]
-    // })
+    this.setState(prevState => ({
+      user: {...prevState.user, watchlists: prevState.user.watchlists.filter(m => m.id !== movie.id)}
+    }))
+  }
+
+  handleRemoveReview = (review) => {
+    this.setState(prevState => ({
+      user: {...prevState.user, reviews: prevState.user.reviews.filter(r => r.id !== review.id)}
+    }))
   }
 
   render() {
@@ -123,11 +129,13 @@ class App extends Component {
                 loggedInStatus={this.state.loggedInStatus} 
                 handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (
-              <MyReviews {...props} 
+              <MyReviews {...props}
+                handleRemoveReview={this.handleRemoveReview} 
                 user={this.state.user}/>)}/>
             <Route exact path={'/watchlist'} render={props => (
               <Watchlist {...props}
                 handleMovieClick={this.handleMovieClick}
+                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}
                 user={this.state.user}/>)}/>
             <Route path={`/movies`} render={props => (
               <Movie {...props} 

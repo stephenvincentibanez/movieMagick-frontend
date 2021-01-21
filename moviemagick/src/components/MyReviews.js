@@ -11,7 +11,7 @@ const MyReviews = (props) => {
     const renderReviews = () => {
         return props.user.reviews.map(review => {
                 return(
-                    <ReviewDetails review={review} key={review.id}/>
+                    <ReviewDetails review={review} key={review.id} handleRemoveReview={props.handleRemoveReview}/>
                 )
             }
         )

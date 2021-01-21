@@ -27,7 +27,10 @@ class Movie extends Component {
         { withCredentials: true }
         ).then(response => {
             if (response.data.status === 'created'){
-                // this.props.handleSuccessfulAuth(response.data)
+                this.setState({
+                    rating: '',
+                    text: ''
+                })
             }
         }).catch(error => {
             console.log('review creation error', error)
@@ -41,11 +44,15 @@ class Movie extends Component {
     }
 
     handleWatchlist = (movie) => {
-        if(!this.props.user.watchlists.includes(movie)){
+        if(!this.props.user.watchlists.find(m => m.movie.title === movie.title)){
             this.props.handleAddToWatchlist(movie)
         }
         else{
-            this.props.handleRemoveFromWatchlist(movie)
+            fetch(`http://localhost:3001/watchlists/${movie.id}`, {
+            method: "DELETE"
+            }).then(r => r.json())
+            .then(data => this.props.handleRemoveFromWatchlist(data.watchlist))
+            // this.props.handleRemoveFromWatchlist(movie)
         }
     }
 
@@ -64,7 +71,7 @@ class Movie extends Component {
         return (
             <Container>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
-                {this.props.user.watchlists.includes(this.props.movie) ? <Button onClick={() => this.handleWatchlist}> Remove from Watchlist </Button> : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
+                {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? <Button onClick={() => this.handleWatchlist(this.props.movie)}> Remove from Watchlist </Button> : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
                 {/* <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button><br/><br/> */}
                 <Row>
                     <Col>
