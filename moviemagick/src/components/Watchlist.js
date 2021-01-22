@@ -40,7 +40,7 @@ const Watchlist = (props) => {
             <h1>Watchlist</h1>
             <Container>
                 <Row>
-                    {renderWatchlist()}
+                    {props.user.watchlists.length > 0 ? renderWatchlist() : <h3>No movies in your watchlist!</h3>}
                 </Row>
             </Container>
         </div>

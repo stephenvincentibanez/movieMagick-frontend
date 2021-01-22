@@ -26,7 +26,7 @@ const MyReviews = (props) => {
             <h1>MyReviews</h1>
             <Container>
                 <Row>
-                    {renderReviews()}
+                    {props.user.reviews.length > 0 ? renderReviews() : <h3>You haven't written any reviews yet!</h3>}
                 </Row>
             </Container>
         </div>
