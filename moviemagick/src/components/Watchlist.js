@@ -7,11 +7,11 @@ import Button from 'react-bootstrap/Button'
 
 const Watchlist = (props) => {
 
-    // const handleOnClick = (movie) => {
-    //     // if(e.target.tagName === 'BUTTON') return
-    //     props.handleMovieClick(movie)
-    //     props.history.push(`/movies/${movie.id}`)
-    // }
+    const handleOnClick = (e, movie) => {
+        if(e.target.tagName === 'BUTTON') return
+        props.handleMovieClick(movie)
+        props.history.push(`/movies/${movie.id}`)
+    }
 
     const handleDelete = (watchlist) => {
         fetch(`http://localhost:3001/watchlists/${watchlist.id}`, {
@@ -23,8 +23,7 @@ const Watchlist = (props) => {
     const renderWatchlist = () => {
         return props.user.watchlists.map(watchlist => {
             return (
-                // <Card onClick={() => handleOnClick(watchlist)} style={{width: '18rem'}} key={watchlist.id}>
-                <Card style={{width: '18rem'}} key={watchlist.id}>
+                <Card style={{width: '18rem'}} key={watchlist.id} onClick={(e) => handleOnClick(e, watchlist.movie)}>
                     <Card.Img variant="top" src={watchlist.movie.poster}/>
                     <Card.Body>
                         <Card.Title> {watchlist.movie.title} </Card.Title>

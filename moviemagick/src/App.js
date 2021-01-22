@@ -9,6 +9,7 @@ import MyReviews from './components/MyReviews'
 import Watchlist from './components/Watchlist'
 import NavBar from './components/NavBar'
 import Movie from './components/Movie'
+import NotFound from './components/NotFound'
 
 class App extends Component {
   constructor() {
@@ -18,7 +19,7 @@ class App extends Component {
       loggedInStatus: 'NOT_LOGGED_IN',
       user: {reviews: [], watchlists: []},
       movies: [],
-      selectedMovie: {},
+      selectedMovie: {reviews: []},
       reviews: []
     }
 
@@ -162,6 +163,7 @@ class App extends Component {
                 handleAddReview={this.handleAddReview}
                 handleAddToWatchlist={this.handleAddToWatchlist}
                 handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
+            <Route component={NotFound}/>
           </Switch>
         </BrowserRouter>
       </div>

@@ -56,7 +56,7 @@ class Movie extends Component {
             })
         }
         else{
-            fetch(`http://localhost:3001/watchlists/${movie.id}`, {
+            fetch(`http://localhost:3001/watchlists/${movie.users.watchlists.id}`, {
                 method: "DELETE"
             }).then(r => r.json())
             .then(console.log)
@@ -118,7 +118,7 @@ class Movie extends Component {
                         <Button onClick={this.handleSubmit}>Submit Review</Button>
                     </Form.Group>
                 </Form>
-                {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null}
+                {/* {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null} */}
                 {this.renderReviews()}
             </Container>
         );
