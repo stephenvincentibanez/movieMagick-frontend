@@ -3,9 +3,6 @@ import ReviewDetails from './ReviewDetails'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-
-
-
 const MyReviews = (props) => {
 
     const renderReviews = () => {
@@ -25,9 +22,7 @@ const MyReviews = (props) => {
         <div>
             <h1>MyReviews</h1>
             <Container>
-                <Row>
-                    {props.user.reviews.length > 0 ? renderReviews() : <h3>You haven't written any reviews yet!</h3>}
-                </Row>
+                    {props.user.reviews.length > 0 ? <Row>{renderReviews()}</Row> : <h3>You haven't written any reviews yet!</h3>}
             </Container>
         </div>
     );
