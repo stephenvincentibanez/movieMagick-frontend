@@ -10,6 +10,7 @@ import Watchlist from './components/Watchlist'
 import NavBar from './components/NavBar'
 import Movie from './components/Movie'
 import NotFound from './components/NotFound'
+import ls from 'local-storage'
 
 class App extends Component {
   constructor() {
@@ -75,32 +76,23 @@ class App extends Component {
   }
 
   handleMovieClick = (movie) => {
-    localStorage.setItem('selectedMovie', this.state.selectedMovie )
     this.setState({
       selectedMovie: movie
     })
+    localStorage.setItem('selectedMovie', this.state.selectedMovie )
   }
 
   handleAddToWatchlist = (movie) => {
-    axios.post('http://localhost:3001/watchlists', {
-            watchlist: {user_id: this.state.user.id, movie_id: movie.id}
-        },
-        { withCredentials: true }
-        ).then(response => {
-            if (response.data.status === 'created'){
-              this.setState(prevState => ({
-                user: {...prevState.user, watchlists: prevState.user.watchlists, movie}
-              }))
-            }
-        }).catch(error => {
-            console.log('add watchlist error', error)
-        })
+    console.log(movie)
+    this.setState(prevState => ({
+      user: {...prevState.user, watchlists: [...prevState.user.watchlists, movie]}
+    }))
   }
 
   handleRemoveFromWatchlist = (movie) => {
     // console.log(movie)
     this.setState(prevState => ({
-      user: {...prevState.user, watchlists: prevState.user.watchlists.filter(m => m.id !== movie.id)}
+      user: {...prevState.user, watchlists: prevState.user.watchlists.filter(m => m.movie.id !== movie.id)}
     }))
   }
 
@@ -112,7 +104,7 @@ class App extends Component {
         .then(r => r.json())
         .then(reviews => this.setState({
         reviews
-        }))
+      }))
   }
 
   handleRemoveReview = (review) => {
@@ -122,6 +114,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.user)
     return (
       <div className="App">
         {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus}/> : null}

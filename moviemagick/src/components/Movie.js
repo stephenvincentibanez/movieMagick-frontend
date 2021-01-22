@@ -6,14 +6,21 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
+import ls from 'local-storage'
 
 class Movie extends Component {
 
     state={
         rating: '1 star',
         text: '',
-        watchlist: 'add'
+        watchlist: 'add',
+        // selectedMovie: localStorage.getItem('selectedMovie')
     }
+
+    // componentDidUpdate(){
+    //     const selectedMovie = localStorage.get('selectedMovie')
+    //     selectedMovie()
+    // }
 
     handleSubmit = (e, review) => {
         e.preventDefault()
@@ -27,7 +34,6 @@ class Movie extends Component {
         },
         { withCredentials: true }
         ).then(response => {
-            // debugger
             if (response.status === 201){
                 this.setState({
                     rating: '',
@@ -49,18 +55,31 @@ class Movie extends Component {
     }
 
     handleWatchlist = (movie) => {
-        if(!this.props.user.watchlists.find(m => m.movie.title === movie.title)){
-            alert("Added to your watchlist!")
-            this.props.handleAddToWatchlist(movie)
-            this.setState({
-                watchlist: 'remove'
-            })
+        const watchlist = this.props.user.watchlists.find(m => m.movie.title === movie.title)
+        if(!watchlist){
+            axios.post('http://localhost:3001/watchlists', {
+                watchlist: {user_id: this.props.user.id, movie_id: movie.id}
+            },
+            { withCredentials: true }
+            ).then(response => {
+            if (response.status === 201){
+                this.props.handleAddToWatchlist(response.data)
+            }
+            }).catch(error => {
+            console.log('add watchlist error', error)
+        })
         }
         else{
-            fetch(`http://localhost:3001/watchlists/${movie.users.watchlists.id}`, {
+            console.log(watchlist)
+            fetch(`http://localhost:3001/watchlists/${watchlist.id}`, {
                 method: "DELETE"
             }).then(r => r.json())
-            .then(console.log)
+            .then(response => {
+                if(response.status === "destroyed"){
+                    this.props.handleRemoveFromWatchlist(movie)
+                }
+            })
+
             // .then(data => this.props.handleRemoveFromWatchlist(data.watchlist))
         }
     }
@@ -76,6 +95,7 @@ class Movie extends Component {
     }
 
     render(){
+        console.log(this.props.user.watchlists)
         return (
             <Container>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
