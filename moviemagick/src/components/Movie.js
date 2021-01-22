@@ -27,7 +27,8 @@ class Movie extends Component {
         },
         { withCredentials: true }
         ).then(response => {
-            if (response.data.status === 'created'){
+            // debugger
+            if (response.status === 201){
                 this.setState({
                     rating: '',
                     text: ''
@@ -79,8 +80,8 @@ class Movie extends Component {
             <Container>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
                 {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? 
-                <Button onClick={() => this.handleWatchlist(this.props.movie)}> Remove from Watchlist </Button>
-                : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
+                <Button onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
+                <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
                 <Row>
                     <Col>
                         <br/>

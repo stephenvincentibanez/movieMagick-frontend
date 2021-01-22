@@ -60,14 +60,6 @@ class App extends Component {
     }))
   }
 
-  componentDidUpdate(){
-    fetch('http://localhost:3001/reviews')
-    .then(r => r.json())
-    .then(reviews => this.setState({
-      reviews
-    }))
-  }
-
   handleLogout(){
     this.setState({
       loggedInStatus: 'NOT_LOGGED_IN',
@@ -116,6 +108,11 @@ class App extends Component {
     this.setState(prevState => ({
       user: {...prevState.user, reviews: prevState.user.reviews, review}
     }))
+    fetch('http://localhost:3001/reviews')
+        .then(r => r.json())
+        .then(reviews => this.setState({
+        reviews
+        }))
   }
 
   handleRemoveReview = (review) => {
