@@ -83,6 +83,7 @@ class App extends Component {
   }
 
   handleMovieClick = (movie) => {
+    localStorage.setItem('selectedMovie', this.state.selectedMovie )
     this.setState({
       selectedMovie: movie
     })
@@ -148,7 +149,8 @@ class App extends Component {
                 handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (
               <MyReviews {...props}
-                handleRemoveReview={this.handleRemoveReview} 
+                handleRemoveReview={this.handleRemoveReview}
+                handleMovieClick={this.handleMovieClick}
                 user={this.state.user}/>)}/>
             <Route exact path={'/watchlist'} render={props => (
               <Watchlist {...props}
