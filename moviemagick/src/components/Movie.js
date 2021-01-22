@@ -10,11 +10,12 @@ import Form from 'react-bootstrap/Form'
 class Movie extends Component {
 
     state={
-        rating: '',
-        text: ''
+        rating: '1 star',
+        text: '',
+        watchlist: 'add'
     }
 
-    handleSubmit = (e) => {
+    handleSubmit = (e, review) => {
         e.preventDefault()
         axios.post('http://localhost:3001/reviews', {
             review: {
@@ -31,8 +32,11 @@ class Movie extends Component {
                     rating: '',
                     text: ''
                 })
-            }
-        }).catch(error => {
+                alert("Your review has been posted!")
+                this.props.handleAddReview(review)
+                }
+            })
+            .catch(error => {
             console.log('review creation error', error)
         })
     }
@@ -45,14 +49,18 @@ class Movie extends Component {
 
     handleWatchlist = (movie) => {
         if(!this.props.user.watchlists.find(m => m.movie.title === movie.title)){
+            alert("Added to your watchlist!")
             this.props.handleAddToWatchlist(movie)
+            this.setState({
+                watchlist: 'remove'
+            })
         }
         else{
             fetch(`http://localhost:3001/watchlists/${movie.id}`, {
-            method: "DELETE"
+                method: "DELETE"
             }).then(r => r.json())
-            .then(data => this.props.handleRemoveFromWatchlist(data.watchlist))
-            // this.props.handleRemoveFromWatchlist(movie)
+            .then(console.log)
+            // .then(data => this.props.handleRemoveFromWatchlist(data.watchlist))
         }
     }
 
@@ -67,21 +75,25 @@ class Movie extends Component {
     }
 
     render(){
-        console.log(this.props)
         return (
             <Container>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
-                {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? <Button onClick={() => this.handleWatchlist(this.props.movie)}> Remove from Watchlist </Button> : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
-                {/* <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button><br/><br/> */}
+                {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? 
+                <Button onClick={() => this.handleWatchlist(this.props.movie)}> Remove from Watchlist </Button>
+                : <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
                 <Row>
                     <Col>
                         <br/>
                         <h5>Director: {this.props.movie.director}</h5>
                         <h5>Writer: {this.props.movie.writer}</h5>
+                        <h5>Released: {this.props.movie.released}</h5>
                         <h5>Genres: {this.props.movie.genres}</h5>
                         <h5>Starring: {this.props.movie.actors}</h5>
-                        <h5>Language: {this.props.movie.language}</h5>
                         <h5>Rated: {this.props.movie.rated}</h5>
+                        <h5>Runtime: {this.props.movie.runtime}</h5>
+                        <h5>IMDB Rating: {this.props.movie.ratings}</h5>
+                        <h5>Awards: {this.props.movie.awards}</h5>
+                        <h5>Language: {this.props.movie.language}</h5>
                         <h5>Plot: {this.props.movie.plot}</h5>
 
                     </Col>
@@ -90,24 +102,24 @@ class Movie extends Component {
                     </Col>
                 </Row>
                     <br/>
-                    <Form>
-                        <h3> Leave a Review</h3>
-                        <Form.Group>
-                            <Form.Label>Rating</Form.Label>
-                            <Form.Control as="select" type="rating" name="rating" value={this.state.rating} onChange={this.handleChange} required >
-                                <option>1 star</option>
-                                <option>2 stars</option>
-                                <option>3 stars</option>
-                                <option>4 stars</option>
-                                <option>5 stars</option>
-                            </Form.Control>    
-                            <Form.Label>Review</Form.Label>
-                            <Form.Control as="textarea" name="text" rows={5} value={this.state.text} onChange={this.handleChange} required/>
-                            <Button onClick={this.handleSubmit}>Submit Review</Button>
-                        </Form.Group>
-                    </Form>
-                    {this.props.movie.reviews > 0 ? <h3>User Reviews</h3> : null}
-                    {this.renderReviews()}
+                <Form>
+                    <h3> Leave a Review</h3>
+                    <Form.Group>
+                        <Form.Label>Rating</Form.Label>
+                        <Form.Control as="select" type="rating" name="rating" value={this.state.rating} onChange={this.handleChange} >
+                            <option>1 star</option>
+                            <option>2 stars</option>
+                            <option>3 stars</option>
+                            <option>4 stars</option>
+                            <option>5 stars</option>
+                        </Form.Control>    
+                        <Form.Label>Review</Form.Label>
+                        <Form.Control as="textarea" name="text" rows={5} value={this.state.text} onChange={this.handleChange} required/>
+                        <Button onClick={this.handleSubmit}>Submit Review</Button>
+                    </Form.Group>
+                </Form>
+                {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null}
+                {this.renderReviews()}
             </Container>
         );
     }

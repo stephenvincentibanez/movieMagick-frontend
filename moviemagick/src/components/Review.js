@@ -5,7 +5,7 @@ const Review = (props) => {
     return (
             <Card style={{width: '18rem'}}>
                 <Card.Body>
-                    <Card.Title>User: {props.user.username} </Card.Title>
+                    <Card.Title>User: {props.review.user.username} </Card.Title>
                     <Card.Text> Rating: {props.review.rating}</Card.Text>
                     <Card.Text> Review: {props.review.text} </Card.Text>
                 </Card.Body>

@@ -47,7 +47,7 @@ class NavBar extends Component {
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.search} onChange={this.handleChange}/>
-                    <Button variant="outline-info" onClick={this.handleSubmit}>Search{this.state.search}</Button>
+                    <Button variant="outline-info" onClick={this.handleSubmit}>Search</Button>
                 </Form>
              </Navbar>
         );

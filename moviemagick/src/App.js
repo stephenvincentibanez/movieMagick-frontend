@@ -59,6 +59,14 @@ class App extends Component {
     }))
   }
 
+  componentDidUpdate(){
+    fetch('http://localhost:3001/reviews')
+    .then(r => r.json())
+    .then(reviews => this.setState({
+      reviews
+    }))
+  }
+
   handleLogout(){
     this.setState({
       loggedInStatus: 'NOT_LOGGED_IN',
@@ -86,7 +94,9 @@ class App extends Component {
         { withCredentials: true }
         ).then(response => {
             if (response.data.status === 'created'){
-                // this.props.handleSuccessfulAuth(response.data)
+              this.setState(prevState => ({
+                user: {...prevState.user, watchlists: prevState.user.watchlists, movie}
+              }))
             }
         }).catch(error => {
             console.log('add watchlist error', error)
@@ -94,8 +104,15 @@ class App extends Component {
   }
 
   handleRemoveFromWatchlist = (movie) => {
+    // console.log(movie)
     this.setState(prevState => ({
       user: {...prevState.user, watchlists: prevState.user.watchlists.filter(m => m.id !== movie.id)}
+    }))
+  }
+
+  handleAddReview = (review) => {
+    this.setState(prevState => ({
+      user: {...prevState.user, reviews: prevState.user.reviews, review}
     }))
   }
 
@@ -142,6 +159,7 @@ class App extends Component {
                 movie={this.state.selectedMovie} 
                 user={this.state.user} 
                 reviews={this.state.reviews} 
+                handleAddReview={this.handleAddReview}
                 handleAddToWatchlist={this.handleAddToWatchlist}
                 handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
           </Switch>
