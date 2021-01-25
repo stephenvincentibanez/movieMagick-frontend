@@ -82,7 +82,6 @@ class App extends Component {
   }
 
   handleAddToWatchlist = (movie) => {
-    console.log(movie)
     this.setState(prevState => ({
       user: {...prevState.user, watchlists: [...prevState.user.watchlists, movie]}
     }))
@@ -143,6 +142,7 @@ class App extends Component {
                 loggedInStatus={this.state.loggedInStatus} 
                 movies={this.state.movies} 
                 handleMovieClick={this.handleMovieClick}
+                handleAddToWatchlist={this.handleAddToWatchlist}
                 handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
             <Route exact path={'/edit_user'} render={props => (
               <EditUser {...props} 

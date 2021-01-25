@@ -13,6 +13,7 @@ class Browse extends Component {
                     movie={movie} 
                     handleMovieClick={this.props.handleMovieClick}
                     user={this.props.user}
+                    handleAddToWatchlist={this.props.handleAddToWatchlist}
                     handleRemoveFromWatchlist={this.props.handleRemoveFromWatchlist} />
             )
         })
