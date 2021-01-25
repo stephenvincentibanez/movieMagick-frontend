@@ -70,7 +70,6 @@ class Movie extends Component {
         })
         }
         else{
-            console.log(watchlist)
             fetch(`http://localhost:3001/watchlists/${watchlist.id}`, {
                 method: "DELETE"
             }).then(r => r.json())
@@ -141,7 +140,7 @@ class Movie extends Component {
                         <Button variant="outline-primary" onClick={this.handleSubmit}>Submit Review</Button>
                     </Form.Group>
                 </Form>
-                {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null}
+                {/* {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null} */}
             </Container>
             <Container>
                 <Row className="justify-content-md-center">

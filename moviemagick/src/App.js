@@ -138,7 +138,8 @@ class App extends Component {
                 user={this.state.user} 
                 loggedInStatus={this.state.loggedInStatus} 
                 movies={this.state.movies} 
-                handleMovieClick={this.handleMovieClick}/>)}/>
+                handleMovieClick={this.handleMovieClick}
+                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
             <Route exact path={'/edit_user'} render={props => (
               <EditUser {...props} 
                 user={this.state.user} 

@@ -9,7 +9,11 @@ class Browse extends Component {
     renderCards = () => {
         return this.props.movies.map(movie => {
             return(
-                <MovieCard movie={movie} handleMovieClick={this.props.handleMovieClick}/>
+                <MovieCard 
+                    movie={movie} 
+                    handleMovieClick={this.props.handleMovieClick}
+                    user={this.props.user}
+                    handleRemoveFromWatchlist={this.props.handleRemoveFromWatchlist} />
             )
         })
     }

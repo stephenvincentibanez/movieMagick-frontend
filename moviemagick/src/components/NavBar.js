@@ -43,10 +43,10 @@ class NavBar extends Component {
                     <Nav.Link href='/edit_user' >Settings</Nav.Link>
                     {/* {this.props.loggedInStatus === "LOGGED_IN" ? <Nav.Link onClick={this.handleLogoutClick}> Logout </Nav.Link> : null} */}
                 </Nav>
-                <Form inline>
+                {/* <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.search} onChange={this.handleChange}/>
                     <Button variant="outline-info" onClick={this.handleSubmit}>Search</Button>
-                </Form>
+                </Form> */}
              </Navbar>
         );
     }
