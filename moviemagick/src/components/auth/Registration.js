@@ -61,7 +61,7 @@ class Registration extends Component {
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control type="password" name="password_confirmation" placeholder="Password confirmation" value={this.state.password_confirmation} onChange={this.handleChange} required/>
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="outline-primary" type="submit">
                         Register
                     </Button>
                 </Form>

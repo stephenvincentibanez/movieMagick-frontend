@@ -38,7 +38,7 @@ class MovieCard extends Component {
                 <Card.Body>
                     <Card.Title> {this.props.movie.title} </Card.Title>
                     <Card.Text className="left"> {this.props.movie.plot} </Card.Text>
-                    {this.state.display === true ? <Button>Add to Watchlist</Button> : null}
+                    {this.state.display === true ? <Button variant="outline-primary">Add to Watchlist</Button> : null}
                 </Card.Body>
             </Card>
         );

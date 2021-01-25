@@ -27,8 +27,8 @@ const Watchlist = (props) => {
                     <Card.Img variant="top" src={watchlist.movie.poster}/>
                     <Card.Body>
                         <Card.Title> {watchlist.movie.title} </Card.Title>
-                        <Card.Text> {watchlist.movie.plot} </Card.Text>
-                        <Button variant="danger" onClick={() => handleDelete(watchlist)}>Remove from Watchlist</Button>
+                        <Card.Text className="left"> {watchlist.movie.plot} </Card.Text>
+                        <Button variant="outline-danger" onClick={() => handleDelete(watchlist)}>Remove from Watchlist</Button>
                     </Card.Body>
                 </Card>
             )

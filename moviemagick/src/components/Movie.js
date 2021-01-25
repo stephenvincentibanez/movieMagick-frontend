@@ -97,12 +97,13 @@ class Movie extends Component {
     render(){
         console.log(this.props.user.watchlists)
         return (
+            <div>
             <Container>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
                 <br/>
                 {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? 
-                <Button variant="danger" onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
-                <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
+                <Button variant="outline-danger" onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
+                <Button variant="outline-primary" onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
                 <Row>
                     <Col className="left">
                         <br/>
@@ -137,12 +138,17 @@ class Movie extends Component {
                         </Form.Control>    
                         <Form.Label>Review</Form.Label>
                         <Form.Control as="textarea" name="text" rows={5} value={this.state.text} onChange={this.handleChange} required/>
-                        <Button onClick={this.handleSubmit}>Submit Review</Button>
+                        <Button variant="outline-primary" onClick={this.handleSubmit}>Submit Review</Button>
                     </Form.Group>
                 </Form>
-                {/* {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null} */}
-                {this.renderReviews()}
+                {this.props.movie.reviews.length > 0 ? <h3>User Reviews</h3> : null}
             </Container>
+            <Container>
+                <Row className="justify-content-md-center">
+                    {this.renderReviews()}
+                </Row>
+            </Container>
+            </div>
         );
     }
 }
