@@ -1,6 +1,43 @@
 .App {
   text-align: center;
-  /* background-color: aliceblue; */
+  background-color: white
+}
+
+html{
+  background-color: white
+}
+
+div.jumbotron{
+  background-color: aliceblue
+}
+
+div.card{
+  width: 17rem;
+  height: auto;
+}
+
+div.editUser{
+  /* text-align: center; */
+  margin: auto;
+  width: 50%;
+}
+
+img.card-img-top{
+  object-fit: cover;
+}
+
+div.col > img {
+  width: 20rem;
+  padding-top: 20px;
+}
+
+.reviewForm {
+  width: 75%;
+  margin: auto;
+}
+
+.form-control {
+  resize: none;
 }
 
 /* img {

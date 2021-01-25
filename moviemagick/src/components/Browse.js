@@ -21,6 +21,7 @@ class Browse extends Component {
     render(){
         return (
             <div>
+                <br/>
                 <h1> Browse </h1>
                 <h5> Welcome {this.props.user.username}!</h5>
                 <br/>

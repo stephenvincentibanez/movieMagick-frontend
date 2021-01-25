@@ -89,7 +89,6 @@ class App extends Component {
   }
 
   handleRemoveFromWatchlist = (movie) => {
-    // console.log(movie)
     this.setState(prevState => ({
       user: {...prevState.user, watchlists: prevState.user.watchlists.filter(m => m.movie.id !== movie.id)}
     }))
@@ -128,11 +127,9 @@ class App extends Component {
   }
 
   render() {
-    // console.log(this.props)
     return (
       <div className="App">
         {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus}/> : null}
-        {/* <BrowserRouter> */}
           <Switch>
             <Route exact path={'/'} render={props => ( 
               <Home {...props} 
@@ -162,7 +159,7 @@ class App extends Component {
                 handleMovieClick={this.handleMovieClick}
                 handleRemoveFromWatchlist={this.handleRemoveFromWatchlistFromWatchlist}
                 user={this.state.user}/>)}/>
-            <Route path={`/movies/:id`} render={props => (
+            <Route path={`/movies/`} render={props => (
               <Movie {...props} 
                 movie={this.getMovie()}
                 user={this.state.user} 
@@ -173,7 +170,6 @@ class App extends Component {
                 />)}/>
             <Route component={NotFound}/>
           </Switch>
-        {/* </BrowserRouter> */}
       </div>
     );
   }

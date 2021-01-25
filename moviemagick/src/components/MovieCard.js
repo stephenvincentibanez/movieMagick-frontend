@@ -61,7 +61,6 @@ class MovieCard extends Component {
                 onClick={(e) => this.handleOnClick(e,this.props.movie)} 
                 onMouseEnter={this.handleHover} 
                 onMouseLeave={this.handleUnhover}
-                style={{width: '17rem'}} 
                 key={this.props.movie.id}>
                 <Card.Img variant="top" src={this.props.movie.poster}/>
                 <Card.Body>

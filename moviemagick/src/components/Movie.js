@@ -94,12 +94,11 @@ class Movie extends Component {
     }
 
     render(){
-        // console.log(this.props.user.watchlists)
         return (
             <div>
             <Container>
-                <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
                 <br/>
+                <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
                 {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? 
                 <Button variant="outline-danger" onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
                 <Button variant="outline-primary" onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
@@ -124,7 +123,7 @@ class Movie extends Component {
                     </Col>
                 </Row>
                     <br/>
-                <Form>
+                <Form className="reviewForm">
                     <h3> Leave a Review</h3>
                     <Form.Group>
                         <Form.Label>Rating</Form.Label>

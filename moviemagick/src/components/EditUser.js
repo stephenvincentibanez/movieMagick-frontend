@@ -54,7 +54,8 @@ class EditUser extends Component {
 
     render() {
         return (
-            <div>
+            <div className="editUser">
+                <br/>
                 <h1>Edit User</h1>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicUsername">
@@ -69,7 +70,7 @@ class EditUser extends Component {
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control type="password" name="password_confirmation" placeholder="Password confirmation" value={this.state.password_confirmation} onChange={this.handleChange} required/>
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="outline-primary" type="submit">
                         Submit
                     </Button>
                 </Form>
