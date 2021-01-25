@@ -23,7 +23,7 @@ const Watchlist = (props) => {
     const renderWatchlist = () => {
         return props.user.watchlists.map(watchlist => {
             return (
-                <Card style={{width: '18rem'}} key={watchlist.id} onClick={(e) => handleOnClick(e, watchlist.movie)}>
+                <Card style={{width: '17rem'}} key={watchlist.id} onClick={(e) => handleOnClick(e, watchlist.movie)}>
                     <Card.Img variant="top" src={watchlist.movie.poster}/>
                     <Card.Body>
                         <Card.Title> {watchlist.movie.title} </Card.Title>
@@ -39,7 +39,7 @@ const Watchlist = (props) => {
         <div>
             <h1>Watchlist</h1>
             <Container>
-                {props.user.watchlists.length > 0 ? <Row> {renderWatchlist()}</Row> : <h3>No movies in your watchlist!</h3>}
+                {props.user.watchlists.length > 0 ? <Row className="justify-content-md-center"> {renderWatchlist()}</Row> : <h3>No movies in your watchlist!</h3>}
             </Container>
         </div>
     );

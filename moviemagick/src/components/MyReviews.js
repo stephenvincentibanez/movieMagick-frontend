@@ -22,7 +22,7 @@ const MyReviews = (props) => {
         <div>
             <h1>MyReviews</h1>
             <Container>
-                    {props.user.reviews.length > 0 ? <Row>{renderReviews()}</Row> : <h3>You haven't written any reviews yet!</h3>}
+                    {props.user.reviews.length > 0 ? <Row className="justify-content-md-center">{renderReviews()}</Row> : <h3>You haven't written any reviews yet!</h3>}
             </Container>
         </div>
     );

@@ -10,7 +10,8 @@ import Watchlist from './components/Watchlist'
 import NavBar from './components/NavBar'
 import Movie from './components/Movie'
 import NotFound from './components/NotFound'
-import ls from 'local-storage'
+// import {reactLocalStorage} from 'reactjs-localstorage';
+// import ls from 'local-storage'
 
 class App extends Component {
   constructor() {
@@ -79,7 +80,7 @@ class App extends Component {
     this.setState({
       selectedMovie: movie
     })
-    localStorage.setItem('selectedMovie', this.state.selectedMovie )
+    // localStorage.setItem('selectedMovie', this.state.selectedMovie )
   }
 
   handleAddToWatchlist = (movie) => {

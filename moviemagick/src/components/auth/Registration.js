@@ -54,7 +54,7 @@ class Registration extends Component {
                         <Form.Control type="username" name="username" placeholder="Enter username" value={this.state.username} onChange={this.handleChange} required/>
                     </Form.Group>
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label >Password</Form.Label>
                         <Form.Control type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} required/>
                     </Form.Group>
                     <Form.Group controlId="formBasicPasswordConfirmation">

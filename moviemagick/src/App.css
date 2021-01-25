@@ -2,16 +2,19 @@
   text-align: center;
 }
 
-/* h1 {
+/* img {
+  height: auto;
+}
+
+h1, h5.home {
   text-align: center;
-} */
+}
 
-/* div < .col {
+.landing {
+  text-align: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+
+.left {
   text-align: left;
-} */
-
-form {
-  justify-content: center;
-  /* text-align: center; */
-  width: 
 }

@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
-import ls from 'local-storage'
+// import ls from 'local-storage'
 
 class Movie extends Component {
 
@@ -99,11 +99,12 @@ class Movie extends Component {
         return (
             <Container>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>
+                <br/>
                 {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? 
-                <Button onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
+                <Button variant="danger" onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
                 <Button onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
                 <Row>
-                    <Col>
+                    <Col className="left">
                         <br/>
                         <h5>Director: {this.props.movie.director}</h5>
                         <h5>Writer: {this.props.movie.writer}</h5>

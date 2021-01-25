@@ -28,11 +28,16 @@ class MovieCard extends Component {
 
     render() {
         return (
-            <Card onClick={() => this.handleOnClick(this.props.movie)} onMouseEnter={this.handleHover} onMouseOut={this.handleUnhover} style={{width: '18rem'}} key={this.props.movie.id}>
+            <Card
+                onClick={() => this.handleOnClick(this.props.movie)} 
+                onMouseEnter={this.handleHover} 
+                onMouseOut={this.handleUnhover}
+                style={{width: '17rem'}} 
+                key={this.props.movie.id}>
                 <Card.Img variant="top" src={this.props.movie.poster}/>
                 <Card.Body>
                     <Card.Title> {this.props.movie.title} </Card.Title>
-                    <Card.Text> {this.props.movie.plot} </Card.Text>
+                    <Card.Text className="left"> {this.props.movie.plot} </Card.Text>
                     {this.state.display === true ? <Button>Add to Watchlist</Button> : null}
                 </Card.Body>
             </Card>

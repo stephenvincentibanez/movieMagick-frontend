@@ -20,7 +20,7 @@ const ReviewDetails = (props) => {
     }
 
     return (
-        <Card style={{width: '18rem'}} onClick={(e) => handleOnClick(e, props.review.movie)}>
+        <Card style={{width: '17rem'}} onClick={(e) => handleOnClick(e, props.review.movie)}>
             <Card.Img variant="top" src={props.review.movie.poster}/>
             <Card.Body>
                 <Card.Title> {props.review.movie.title} </Card.Title>

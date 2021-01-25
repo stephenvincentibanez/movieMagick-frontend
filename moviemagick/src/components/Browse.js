@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Container from 'react-bootstrap/Container'
 import MovieCard from './MovieCard'
+import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
 
@@ -21,7 +21,7 @@ class Browse extends Component {
                 <h5> Welcome {this.props.user.username}!</h5>
                 <br/>
                 <Container>
-                    <Row>
+                    <Row className="justify-content-md-center">
                         {this.renderCards()}
                     </Row>
                 </Container>

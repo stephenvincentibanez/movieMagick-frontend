@@ -6,8 +6,6 @@ import FormControl from 'react-bootstrap/FormControl'
 import React, { Component } from 'react';
 // import axios from 'axios'
 
-
-
 class NavBar extends Component {
 
     state={
