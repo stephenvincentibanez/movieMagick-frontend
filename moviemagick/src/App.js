@@ -1,6 +1,7 @@
 import './App.css';
 import React, {Component} from 'react'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { withRouter } from "react-router";
 import axios from 'axios'
 import Home from './components/Home'
 import Browse from  './components/Browse'
@@ -10,8 +11,6 @@ import Watchlist from './components/Watchlist'
 import NavBar from './components/NavBar'
 import Movie from './components/Movie'
 import NotFound from './components/NotFound'
-// import {reactLocalStorage} from 'reactjs-localstorage';
-// import ls from 'local-storage'
 
 class App extends Component {
   constructor() {
@@ -79,8 +78,7 @@ class App extends Component {
   handleMovieClick = (movie) => {
     this.setState({
       selectedMovie: movie
-    })
-    // localStorage.setItem('selectedMovie', this.state.selectedMovie )
+    },localStorage.setItem('selectedMovie', JSON.stringify(movie)))
   }
 
   handleAddToWatchlist = (movie) => {
@@ -120,12 +118,21 @@ class App extends Component {
     }))
   }
 
+  getMovie = () => {
+    if(Object.keys(this.state.selectedMovie).length > 1){
+      return this.state.selectedMovie
+    }
+    else{
+      return JSON.parse(localStorage.getItem('selectedMovie'))
+    }
+  }
+
   render() {
-    console.log(this.state.user)
+    // console.log(this.props)
     return (
       <div className="App">
         {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus}/> : null}
-        <BrowserRouter>
+        {/* <BrowserRouter> */}
           <Switch>
             <Route exact path={'/'} render={props => ( 
               <Home {...props} 
@@ -155,20 +162,21 @@ class App extends Component {
                 handleMovieClick={this.handleMovieClick}
                 handleRemoveFromWatchlist={this.handleRemoveFromWatchlistFromWatchlist}
                 user={this.state.user}/>)}/>
-            <Route path={`/movies`} render={props => (
+            <Route path={`/movies/:id`} render={props => (
               <Movie {...props} 
-                movie={this.state.selectedMovie} 
+                movie={this.getMovie()}
                 user={this.state.user} 
                 reviews={this.state.reviews} 
                 handleAddReview={this.handleAddReview}
                 handleAddToWatchlist={this.handleAddToWatchlist}
-                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
+                handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}
+                />)}/>
             <Route component={NotFound}/>
           </Switch>
-        </BrowserRouter>
+        {/* </BrowserRouter> */}
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

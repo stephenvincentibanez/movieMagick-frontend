@@ -67,7 +67,8 @@ class MovieCard extends Component {
                 <Card.Body>
                     <Card.Title> {this.props.movie.title} </Card.Title>
                     <Card.Text className="left"> {this.props.movie.plot} </Card.Text>
-                    {this.state.display === true ? 
+                    {this.state.display === true ?
+                        // this.props.user.watchlists.find(m => m.movie.title === movie.title)
                         <Button variant="outline-primary" onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> :
                         null}
                 </Card.Body>

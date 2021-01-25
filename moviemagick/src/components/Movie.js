@@ -94,7 +94,7 @@ class Movie extends Component {
     }
 
     render(){
-        console.log(this.props.user.watchlists)
+        // console.log(this.props.user.watchlists)
         return (
             <div>
             <Container>
