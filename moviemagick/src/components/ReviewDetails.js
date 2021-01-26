@@ -26,7 +26,11 @@ const ReviewDetails = (props) => {
                 <Card.Title> {props.review.movie.title} </Card.Title>
                 <Card.Text> Rating: {props.review.rating}</Card.Text>
                 <Card.Text> Review: {props.review.text} </Card.Text>
-                <Button variant="outline-danger" onClick={() => {if (window.confirm('Are you sure you want to delete this review?')) handleDelete(props.review)}}>Delete Review</Button>
+                <div className="watchlistBtnParent">
+                    <div className="watchlistBtn">
+                        <Button variant="outline-danger" size="sm" onClick={() => {if (window.confirm('Are you sure you want to delete this review?')) handleDelete(props.review)}}>Delete Review</Button>
+                    </div>
+                </div>
             </Card.Body>
         </Card>
     );

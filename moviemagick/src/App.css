@@ -46,12 +46,12 @@ div.card{
   text-align: center;
 }
 
-div.watchlistBtn{
+div.watchlistBtn, div.removeWatchlistBtn{
   position: absolute;
   bottom: 3px;
 }
 
-div.watchlistBtnParent{
+div.watchlistBtnParent, div.removeWatchlistBtnParent{
   display:flex;
   justify-content: center;
 }
@@ -60,6 +60,7 @@ div.card-body{
   background-color: aliceblue;
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
 form.editUser{

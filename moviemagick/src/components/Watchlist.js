@@ -28,7 +28,11 @@ const Watchlist = (props) => {
                     <Card.Body>
                         <Card.Title> {watchlist.movie.title} </Card.Title>
                         <Card.Text className="left"> {watchlist.movie.plot} </Card.Text>
-                        <Button variant="outline-danger" onClick={() => handleDelete(watchlist)}>Remove from Watchlist</Button>
+                        <div className="removeWatchlistBtnParent">
+                            <div className="removeWatchlistBtn">
+                                <Button variant="outline-danger" size="sm" onClick={() => handleDelete(watchlist)}>Remove from Watchlist</Button>
+                            </div>
+                        </div>
                     </Card.Body>
                 </Card>
             )
