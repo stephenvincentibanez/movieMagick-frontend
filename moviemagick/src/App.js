@@ -59,6 +59,9 @@ class App extends Component {
     .then(reviews => this.setState({
       reviews
     }))
+    fetch('http://localhost:3001/genres')
+    .then(r => r.json())
+    .then(console.log)
   }
 
   handleLogout = () => {

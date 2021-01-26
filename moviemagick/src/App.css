@@ -1,12 +1,10 @@
 .App {
   text-align: center;
-  /* background-color: aliceblue */
   background-color:	#dae4ff;
 
 }
 
 html{
-  /* background-color: aliceblue */
   background-color:	#dae4ff;
 }
 
@@ -32,29 +30,36 @@ div.card{
 div.left{
   background-color: #E4EBFC;
   border-radius: 10px;
-  height:
 }
 
 nav.navbar{
   background-color: aliceblue;
 }
 
-/* div.moviesContainer{
-  background-color: #B6C9FF;
-  padding-top: 26px;
-  padding-bottom: 26px;
-  border-radius: 10px;
-  width: 100%;
-} */
+div.moviesContainer{
+  padding-bottom: 20px;
+}
 
 div.card{
-  /* height: 200px; */
-  width: 18rem;
+  width: 17rem;
   border-radius: 20px;
+  text-align: center;
+}
+
+div.watchlistBtn{
+  position: absolute;
+  bottom: 3px;
+}
+
+div.watchlistBtnParent{
+  display:flex;
+  justify-content: center;
 }
 
 div.card-body{
   background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
 }
 
 form.editUser{
@@ -93,6 +98,10 @@ div.col > img {
 
 span{
   display: inline-block;
+}
+
+button.btn{
+  position: relative;
 }
 
 .left {

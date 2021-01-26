@@ -71,8 +71,6 @@ class Movie extends Component {
                     this.props.handleRemoveFromWatchlist(movie)
                 }
             })
-
-            // .then(data => this.props.handleRemoveFromWatchlist(data.watchlist))
         }
     }
 
@@ -122,15 +120,15 @@ class Movie extends Component {
                 <Form className="reviewForm">
                     <h3> Leave a Review</h3>
                     <Form.Group>
-                        <Form.Label>Rating</Form.Label>
+                        <h5>Rating</h5>
                         <Form.Control as="select" type="rating" name="rating" value={this.state.rating} onChange={this.handleChange} >
                             <option>1 star</option>
                             <option>2 stars</option>
                             <option>3 stars</option>
                             <option>4 stars</option>
                             <option>5 stars</option>
-                        </Form.Control>    
-                        <Form.Label>Review</Form.Label>
+                        </Form.Control><br/>
+                        <h5>Review</h5>
                         <Form.Control as="textarea" name="text" rows={5} value={this.state.text} onChange={this.handleChange} required/>
                         <Button variant="outline-primary" onClick={this.handleSubmit}>Submit Review</Button>
                     </Form.Group>

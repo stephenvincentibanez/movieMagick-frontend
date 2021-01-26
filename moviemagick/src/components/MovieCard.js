@@ -75,9 +75,13 @@ class MovieCard extends Component {
                 <Card.Body>
                     <Card.Title> {this.props.movie.title} </Card.Title>
                     <Card.Text className="left">{this.props.movie.plot}</Card.Text>
-                    {this.state.display === true ?
-                        this.renderWatchlistButton() :
-                        <span style={{height: '3rem'}}>&nbsp;&nbsp;</span>}
+                    <div className="watchlistBtnParent">
+                        <div className="watchlistBtn">
+                            {this.state.display === true ?
+                            this.renderWatchlistButton() :
+                            <span style={{height: '3rem'}}>&nbsp;&nbsp;</span>}
+                        </div>
+                    </div>
                 </Card.Body>
             </Card>
         );
