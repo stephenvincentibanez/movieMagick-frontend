@@ -65,7 +65,7 @@ class App extends Component {
     this.setState({
       loggedInStatus: 'NOT_LOGGED_IN',
       user: {reviews: [], watchlists: []}
-    })
+    }, this.props.history.push('/'))
   }
 
   handleLogin = (data) => {
@@ -135,7 +135,7 @@ class App extends Component {
     console.log(this.state.user)
     return (
       <div className="App">
-        {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus}/> : null}
+        {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/> : null}
           <Switch>
             <Route exact path={'/'} render={props => ( 
               <Home {...props} 

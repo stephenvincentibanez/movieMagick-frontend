@@ -25,7 +25,7 @@ class NavBar extends Component {
         })
     }
 
-    handleLogoutClick() {
+    handleLogoutClick = () => {
         axios.delete('http://localhost:3001/logout', {withCredentials: true}).then(response => {
             this.props.handleLogout()
         }).catch(error => {
