@@ -38,7 +38,6 @@ class MovieCard extends Component {
             ).then(response => {
             if (response.status === 201){
                 this.props.handleAddToWatchlist(response.data)
-                console.log('hi')
             }
             }).catch(error => {
             console.log('add watchlist error', error)
@@ -58,10 +57,10 @@ class MovieCard extends Component {
 
     renderWatchlistButton = () => {
         if(!this.props.user.watchlists.find(m => m.movie.title === this.props.movie.title)){
-            return <Button onClick={() => this.handleWatchlist(this.props.movie)} variant="outline-primary">Add to Watchlist</Button>
+            return <Button onClick={() => this.handleWatchlist(this.props.movie)} variant="outline-primary" size="sm" >Add to Watchlist</Button>
         }
         else{
-            return <Button onClick={() => this.handleWatchlist(this.props.movie)} variant="outline-danger">Remove from Watchlist</Button>
+            return <Button onClick={() => this.handleWatchlist(this.props.movie)} variant="outline-danger" size="sm">Remove from Watchlist</Button>
         }
     }
 
@@ -75,10 +74,10 @@ class MovieCard extends Component {
                 <Card.Img variant="top" src={this.props.movie.poster}/>
                 <Card.Body>
                     <Card.Title> {this.props.movie.title} </Card.Title>
-                    <Card.Text className="left"> {this.props.movie.plot} </Card.Text>
+                    <Card.Text className="left">{this.props.movie.plot}</Card.Text>
                     {this.state.display === true ?
-                        this.renderWatchlistButton():
-                        null}
+                        this.renderWatchlistButton() :
+                        <span style={{height: '3rem'}}>&nbsp;&nbsp;</span>}
                 </Card.Body>
             </Card>
         );

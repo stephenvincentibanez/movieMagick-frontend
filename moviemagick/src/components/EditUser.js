@@ -27,8 +27,14 @@ class EditUser extends Component {
         }, 
         { withCredentials: true }
         ).then(response => {
+            console.log(response)
             if(response.data.status === 'updated'){
+                this.props.handleEditUser(response.data.user)
                 this.props.history.push("/browse")
+                alert('Your account was successfully updated!')
+            }
+            else{
+                alert('Your passwords did not match. Please try again.')
             }
         }).catch(error => {
             console.log("update error", error)
@@ -46,11 +52,14 @@ class EditUser extends Component {
         axios.delete(`http://localhost:3001/users/${id}`)
         .then(response => {
             if(response.data.status === 'destroyed'){
-                this.props.handleLogout()
                 this.props.history.push("/")
+                this.props.handleLogout()
             }
+        }).catch(error => {
+            console.log("deleting error", error)
         })
     }
+
 
     render() {
         return (
@@ -72,8 +81,11 @@ class EditUser extends Component {
                     </Form.Group>
                     <Button variant="outline-primary" type="submit">
                         Submit
-                    </Button>
+                    </Button><br/><br/>
                 </Form>
+                    <Button variant="outline-danger" onClick={() =>  {if (window.confirm('Are you sure you wish to delete your account?')) this.deleteUser()}}>
+                        Delete Your Account
+                    </Button>
             </div>
         );
     }

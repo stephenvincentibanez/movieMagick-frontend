@@ -17,7 +17,6 @@ div.card{
 }
 
 div.editUser{
-  /* text-align: center; */
   margin: auto;
   width: 50%;
 }
@@ -38,6 +37,10 @@ div.col > img {
 
 .form-control {
   resize: none;
+}
+
+span{
+  display: inline-block;
 }
 
 /* img {

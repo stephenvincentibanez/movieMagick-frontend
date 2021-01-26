@@ -1,6 +1,6 @@
 import './App.css';
 import React, {Component} from 'react'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import { Switch, Route} from 'react-router-dom'
 import { withRouter } from "react-router";
 import axios from 'axios'
 import Home from './components/Home'
@@ -61,17 +61,23 @@ class App extends Component {
     }))
   }
 
-  handleLogout(){
+  handleLogout = () => {
     this.setState({
       loggedInStatus: 'NOT_LOGGED_IN',
-      user: {}
+      user: {reviews: [], watchlists: []}
     })
   }
 
-  handleLogin(data) {
+  handleLogin = (data) => {
     this.setState({
       loggedInStatus: 'LOGGED_IN',
       user: data.user
+    }, this.props.history.push('/browse'))
+  }
+
+  handleEditUser = (user) => {
+    this.setState({
+      user:user
     })
   }
 
@@ -126,6 +132,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.user)
     return (
       <div className="App">
         {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus}/> : null}
@@ -147,7 +154,8 @@ class App extends Component {
             <Route exact path={'/edit_user'} render={props => (
               <EditUser {...props} 
                 user={this.state.user} 
-                loggedInStatus={this.state.loggedInStatus} 
+                loggedInStatus={this.state.loggedInStatus}
+                handleEditUser={this.handleEditUser}
                 handleLogout={this.handleLogout}/>)}/>
             <Route exact path={'/myreviews'} render={props => (
               <MyReviews {...props}

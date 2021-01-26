@@ -12,15 +12,8 @@ class Movie extends Component {
 
     state={
         rating: '1 star',
-        text: '',
-        watchlist: 'add',
-        // selectedMovie: localStorage.getItem('selectedMovie')
+        text: ''
     }
-
-    // componentDidUpdate(){
-    //     const selectedMovie = localStorage.get('selectedMovie')
-    //     selectedMovie()
-    // }
 
     handleSubmit = (e, review) => {
         e.preventDefault()
@@ -45,6 +38,7 @@ class Movie extends Component {
             })
             .catch(error => {
             console.log('review creation error', error)
+            alert("Your review can't be blank!")
         })
     }
 
@@ -94,6 +88,7 @@ class Movie extends Component {
     }
 
     render(){
+        console.log(this.props)
         return (
             <div>
             <Container>
@@ -107,14 +102,15 @@ class Movie extends Component {
                         <br/>
                         <h5>Director: {this.props.movie.director}</h5>
                         <h5>Writer: {this.props.movie.writer}</h5>
-                        <h5>Released: {this.props.movie.released}</h5>
-                        <h5>Genres: {this.props.movie.genres}</h5>
                         <h5>Starring: {this.props.movie.actors}</h5>
+                        <h5>Genres: {this.props.movie.genres}</h5>
                         <h5>Rated: {this.props.movie.rated}</h5>
+                        <h5>Released: {this.props.movie.released}</h5>
                         <h5>Runtime: {this.props.movie.runtime}</h5>
                         <h5>IMDB Rating: {this.props.movie.ratings}</h5>
                         <h5>Awards: {this.props.movie.awards}</h5>
                         <h5>Language: {this.props.movie.language}</h5>
+                        <h5>Production Company: {this.props.movie.production}</h5> 
                         <h5>Plot: {this.props.movie.plot}</h5>
 
                     </Col>
