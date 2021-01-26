@@ -12,10 +12,12 @@ class NavBar extends Component {
         search: ''
     }
 
-    handleSubmit = e => {
-        e.preventDefault()
-        console.log('searching...')
-    }
+    // handleSubmit = e => {
+    //     e.preventDefault()
+        
+    //     fetch('http://www.omdbapi.com?apikey=' + APIKEY + `&s=${convertedValue}`)
+    //     console.log('searching...')
+    // }
 
     handleChange = e => {
         this.setState({
@@ -43,10 +45,10 @@ class NavBar extends Component {
                     <Nav.Link href='/edit_user' >Settings</Nav.Link>
                     {/* {this.props.loggedInStatus === "LOGGED_IN" ? <Nav.Link onClick={this.handleLogoutClick}> Logout </Nav.Link> : null} */}
                 </Nav>
-                {/* <Form inline>
+                <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.search} onChange={this.handleChange}/>
-                    <Button variant="outline-info" onClick={this.handleSubmit}>Search</Button>
-                </Form> */}
+                    <Button variant="outline-info" onClick={(e, value) => this.handleSubmit(e, value)}>Search</Button>
+                </Form>
              </Navbar>
         );
     }
