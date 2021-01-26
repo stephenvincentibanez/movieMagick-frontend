@@ -39,6 +39,7 @@ const Watchlist = (props) => {
         <div>
             <br/>
             <h1>Watchlist</h1>
+            <br/>
             <Container>
                 {props.user.watchlists.length > 0 ? <Row className="justify-content-md-center"> {renderWatchlist()}</Row> : <h3>No movies in your watchlist!</h3>}
             </Container>

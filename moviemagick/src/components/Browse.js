@@ -26,7 +26,7 @@ class Browse extends Component {
                 <h1> Browse </h1>
                 <h5> Welcome {this.props.user.username}!</h5>
                 <br/>
-                <Container>
+                <Container className="moviesContainer">
                     <Row className="justify-content-md-center">
                         {this.renderCards()}
                     </Row>

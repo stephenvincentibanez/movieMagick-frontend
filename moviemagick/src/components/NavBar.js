@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl'
 import React, { Component } from 'react';
-// import axios from 'axios'
+import axios from 'axios'
 
 class NavBar extends Component {
 
@@ -25,13 +25,13 @@ class NavBar extends Component {
         })
     }
 
-    // handleLogoutClick() {
-    //     axios.delete('http://localhost:3001/logout', {withCredentials: true}).then(response => {
-    //         this.props.handleLogout()
-    //     }).catch(error => {
-    //         console.log('logout error', error)
-    //     })
-    // }
+    handleLogoutClick() {
+        axios.delete('http://localhost:3001/logout', {withCredentials: true}).then(response => {
+            this.props.handleLogout()
+        }).catch(error => {
+            console.log('logout error', error)
+        })
+    }
         
     render() {
         return (
@@ -43,7 +43,7 @@ class NavBar extends Component {
                     <Nav.Link href="/myreviews">MyReviews</Nav.Link>
                     <Nav.Link href="/watchlist">Watchlist</Nav.Link>
                     <Nav.Link href='/edit_user' >Settings</Nav.Link>
-                    {/* {this.props.loggedInStatus === "LOGGED_IN" ? <Nav.Link onClick={this.handleLogoutClick}> Logout </Nav.Link> : null} */}
+                    {this.props.loggedInStatus === "LOGGED_IN" ? <Nav.Link onClick={this.handleLogoutClick}> Logout </Nav.Link> : null}
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.search} onChange={this.handleChange}/>

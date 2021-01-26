@@ -83,7 +83,7 @@ class EditUser extends Component {
                         Submit
                     </Button><br/><br/>
                 </Form>
-                    <Button variant="outline-danger" onClick={() =>  {if (window.confirm('Are you sure you wish to delete your account?')) this.deleteUser()}}>
+                    <Button variant="outline-danger" onClick={() => {if (window.confirm('Are you sure you wish to delete your account?')) this.deleteUser()}}>
                         Delete Your Account
                     </Button>
             </div>

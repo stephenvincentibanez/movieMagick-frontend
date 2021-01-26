@@ -22,6 +22,7 @@ const MyReviews = (props) => {
         <div>
             <br/>
             <h1>MyReviews</h1>
+            <br/>
             <Container>
                     {props.user.reviews.length > 0 ? <Row className="justify-content-md-center">{renderReviews()}</Row> : <h3>You haven't written any reviews yet!</h3>}
             </Container>

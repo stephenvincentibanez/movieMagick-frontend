@@ -26,7 +26,7 @@ const ReviewDetails = (props) => {
                 <Card.Title> {props.review.movie.title} </Card.Title>
                 <Card.Text> Rating: {props.review.rating}</Card.Text>
                 <Card.Text> Review: {props.review.text} </Card.Text>
-                <Button variant="outline-danger" onClick={() => handleDelete(props.review)}>Delete Review</Button>
+                <Button variant="outline-danger" onClick={() => {if (window.confirm('Are you sure you want to delete this review?')) handleDelete(props.review)}}>Delete Review</Button>
             </Card.Body>
         </Card>
     );

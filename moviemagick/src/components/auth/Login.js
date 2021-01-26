@@ -49,7 +49,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="loginForm">
                 <h3> Login </h3>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicUsername">

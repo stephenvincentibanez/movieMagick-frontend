@@ -1,14 +1,17 @@
 .App {
   text-align: center;
-  background-color: aliceblue
+  /* background-color: aliceblue */
+  background-color:	#dae4ff;
+
 }
 
 html{
-  background-color: aliceblue
+  /* background-color: aliceblue */
+  background-color:	#dae4ff;
 }
 
 div.jumbotron{
-  background-color: aliceblue
+  background-color: aliceblue;
 }
 
 div.card{
@@ -16,13 +19,40 @@ div.card{
   height: auto;
 }
 
+div.left{
+  background-color: #E4EBFC;
+  border-radius: 10px;
+}
+
+/* div.moviesContainer{
+  background-color: #B6C9FF;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  border-radius: 10px;
+  width: 100%;
+} */
+
+div.card{
+  /* height: 200px; */
+  width: 18rem;
+  border-radius: 20px;
+}
+
+div.card-body{
+  background-color: aliceblue;
+}
+
 div.editUser{
   margin: auto;
   width: 50%;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 img.card-img-top{
   object-fit: cover;
+  height: 400px;
 }
 
 div.col > img {
@@ -35,6 +65,13 @@ div.col > img {
   margin: auto;
 }
 
+.registrationForm, .loginForm {
+  /* background-color: #B6C9FF; */
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 .form-control {
   resize: none;
 }
@@ -42,19 +79,6 @@ div.col > img {
 span{
   display: inline-block;
 }
-
-/* img {
-  height: auto;
-}
-
-h1, h5.home {
-  text-align: center;
-}
-
-.landing {
-  text-align: center;
-  /* justify-content: center; */
-  /* align-items: center; */
 
 .left {
   text-align: left;

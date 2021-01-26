@@ -46,7 +46,7 @@ class Registration extends Component {
 
     render() {
         return (
-            <div>
+            <div className="registrationForm">
                 <h3> Register </h3>
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group controlId="formBasicUsername">

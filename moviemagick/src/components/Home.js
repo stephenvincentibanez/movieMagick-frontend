@@ -40,6 +40,7 @@ class Home extends Component {
                 <Container>
                     {this.props.loggedInStatus === "LOGGED_IN" ? <h5>Currently logged in as {this.props.user.username}</h5> : null}
                     {this.props.loggedInStatus === "LOGGED_IN" ? <Button onClick={() => this.handleLogoutClick()} variant="outline-danger"> Logout </Button> : null}
+                    <br/><br/>
                     <Row >
                         <Col> <Registration handleSuccessfulAuth={this.handleSuccessfulAuth}/> </Col>                
                         <Col> <Login handleSuccessfulAuth={this.handleSuccessfulAuth} loggedInStatus={this.props.loggedInStatus}/> </Col>

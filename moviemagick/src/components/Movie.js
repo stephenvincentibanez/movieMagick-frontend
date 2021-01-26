@@ -97,6 +97,7 @@ class Movie extends Component {
                 {this.props.user.watchlists.find(movie => movie.movie.title === this.props.movie.title) ? 
                 <Button variant="outline-danger" onClick={() => this.handleWatchlist(this.props.movie)}>Remove from Watchlist</Button> : 
                 <Button variant="outline-primary" onClick={() => this.handleWatchlist(this.props.movie)}>Add to Watchlist</Button> }
+                <br/><br/>
                 <Row>
                     <Col className="left">
                         <br/>
