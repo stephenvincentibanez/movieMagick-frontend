@@ -63,10 +63,11 @@ class EditUser extends Component {
 
     render() {
         return (
-            <div className="editUser">
-                <br/>
+            // <div className="editUser">
+            <div>
                 <h1>Edit User</h1>
-                <Form onSubmit={this.handleSubmit}>
+                <br/>
+                <Form onSubmit={this.handleSubmit} className="editUser">
                     <Form.Group controlId="formBasicUsername">
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="username" name="username" placeholder={this.props.user.username} value={this.state.username} onChange={this.handleChange} required/>
@@ -82,10 +83,10 @@ class EditUser extends Component {
                     <Button variant="outline-primary" type="submit">
                         Submit
                     </Button><br/><br/>
-                </Form>
                     <Button variant="outline-danger" onClick={() => {if (window.confirm('Are you sure you wish to delete your account?')) this.deleteUser()}}>
                         Delete Your Account
                     </Button>
+                </Form>
             </div>
         );
     }

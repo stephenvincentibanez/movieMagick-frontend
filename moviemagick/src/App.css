@@ -10,6 +10,16 @@ html{
   background-color:	#dae4ff;
 }
 
+h1{
+  background-color: aliceblue;
+  padding: 10px;
+}
+
+.welcome{
+  background-color: aliceblue;
+  padding-bottom: 5px;
+}
+
 div.jumbotron{
   background-color: aliceblue;
 }
@@ -22,6 +32,11 @@ div.card{
 div.left{
   background-color: #E4EBFC;
   border-radius: 10px;
+  height:
+}
+
+nav.navbar{
+  background-color: aliceblue;
 }
 
 /* div.moviesContainer{
@@ -42,7 +57,7 @@ div.card-body{
   background-color: aliceblue;
 }
 
-div.editUser{
+form.editUser{
   margin: auto;
   width: 50%;
   background-color: aliceblue;
@@ -56,8 +71,8 @@ img.card-img-top{
 }
 
 div.col > img {
-  width: 20rem;
-  padding-top: 20px;
+  width: 27rem;
+  height: auto;
 }
 
 .reviewForm {

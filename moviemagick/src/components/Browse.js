@@ -22,9 +22,10 @@ class Browse extends Component {
     render(){
         return (
             <div>
-                <br/>
+                <div className="welcome">
                 <h1> Browse </h1>
                 <h5> Welcome {this.props.user.username}!</h5>
+                </div>
                 <br/>
                 <Container className="moviesContainer">
                     <Row className="justify-content-md-center">

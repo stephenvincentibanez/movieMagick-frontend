@@ -37,7 +37,6 @@ const Watchlist = (props) => {
 
     return (
         <div>
-            <br/>
             <h1>Watchlist</h1>
             <br/>
             <Container>

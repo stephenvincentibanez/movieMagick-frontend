@@ -20,7 +20,6 @@ const MyReviews = (props) => {
 
     return (
         <div>
-            <br/>
             <h1>MyReviews</h1>
             <br/>
             <Container>
