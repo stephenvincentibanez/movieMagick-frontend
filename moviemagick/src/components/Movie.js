@@ -16,29 +16,35 @@ class Movie extends Component {
 
     handleSubmit = (e, review) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/reviews', {
-            review: {
-                movie_id: this.props.movie.id,
-                user_id: this.props.user.id,
-                rating: this.state.rating,
-                text: this.state.text
-            }
-        },
-        { withCredentials: true }
-        ).then(response => {
-            if (response.status === 201){
-                this.setState({
-                    rating: '',
-                    text: ''
-                })
-                alert("Your review has been posted!")
-                this.props.handleAddReview(review)
+        console.log(this.props.user.reviews)
+        if(this.props.user.reviews.movie){
+            alert("You've already reviewed this movie!")
+        }
+        else{
+            axios.post('http://localhost:3001/reviews', {
+                review: {
+                    movie_id: this.props.movie.id,
+                    user_id: this.props.user.id,
+                    rating: this.state.rating,
+                    text: this.state.text
                 }
+            },
+            { withCredentials: true }
+            ).then(response => {
+                if (response.status === 201){
+                    this.setState({
+                        rating: '',
+                        text: ''
+                    })
+                    alert("Your review has been posted!")
+                    this.props.handleAddReview(review)
+                    }
+                })
+                .catch(error => {
+                console.log('review creation error', error)
+                alert("Your review can't be blank!")
             })
-            .catch(error => {
-            console.log('review creation error', error)
-            alert("Your review can't be blank!")
-        })
+        }
     }
 
     handleChange = e => {
@@ -85,7 +91,6 @@ class Movie extends Component {
     }
 
     render(){
-        console.log(this.props)
         return (
             <div>
                 <h1>{this.props.movie.title} ({this.props.movie.year})</h1>

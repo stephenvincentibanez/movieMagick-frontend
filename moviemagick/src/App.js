@@ -21,11 +21,10 @@ class App extends Component {
       user: {reviews: [], watchlists: []},
       movies: [],
       selectedMovie: {reviews: []},
-      reviews: []
+      reviews: [],
+      searchMovies: []
+      //conditionally render searchMovies if theres a search, otherwise render movies
     }
-
-    this.handleLogin = this.handleLogin.bind(this)
-    this.handleLogout = this.handleLogout.bind(this)
   }
 
   checkLoginStatus(){
@@ -59,9 +58,12 @@ class App extends Component {
     .then(reviews => this.setState({
       reviews
     }))
-    fetch('http://localhost:3001/genres')
-    .then(r => r.json())
-    .then(console.log)
+  }
+
+  handleSearch = (movies) => {
+    this.setState({
+      searchMovies: movies
+    })
   }
 
   handleLogout = () => {
@@ -135,7 +137,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.user)
     return (
       <div className="App">
         {this.state.loggedInStatus === "LOGGED_IN" ? <NavBar loggedInStatus={this.state.loggedInStatus} handleLogout={this.handleLogout}/> : null}
@@ -150,7 +151,9 @@ class App extends Component {
               <Browse {...props} 
                 user={this.state.user} 
                 loggedInStatus={this.state.loggedInStatus} 
-                movies={this.state.movies} 
+                movies={this.state.movies}
+                searchMovies={this.state.searchMovies}
+                handleSearch={this.handleSearch}
                 handleMovieClick={this.handleMovieClick}
                 handleAddToWatchlist={this.handleAddToWatchlist}
                 handleRemoveFromWatchlist={this.handleRemoveFromWatchlist}/>)}/>
