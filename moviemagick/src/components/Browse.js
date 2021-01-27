@@ -21,7 +21,6 @@ class Browse extends Component {
                 search: ""
             })
         )
-        //callback to app
     }
 
     handleChange = e => {
@@ -39,7 +38,6 @@ class Browse extends Component {
           }
          }
         }
-        console.log(data);  
        }
 
     renderCards = () => {
@@ -80,7 +78,7 @@ class Browse extends Component {
                     <h5> Welcome {this.props.user.username}!</h5>
                 </div>
                 <form className="search" onSubmit={(e, value) => this.handleSubmit(e, value)}>
-                    <input type="text" name="search" placeholder="Search for a movie!" value={this.state.search} onChange={(e,value) => this.handleChange(e,value)}></input>
+                    <input className="search" type="text" name="search" placeholder="Search for a movie!" value={this.state.search} onChange={(e,value) => this.handleChange(e,value)}></input>
                     {/* <input type="submit" value="Search"/> */}
                 </form>
                 <Container className="moviesContainer">

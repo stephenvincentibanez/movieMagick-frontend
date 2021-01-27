@@ -97,8 +97,12 @@ div.col > img {
   resize: none;
 }
 
-.search{
+form.search{
   padding: 10px;
+}
+
+input.search{
+  background-color: aliceblue;
 }
 
 span{
