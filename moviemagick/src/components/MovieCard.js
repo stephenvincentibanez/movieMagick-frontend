@@ -71,7 +71,7 @@ class MovieCard extends Component {
                 onMouseEnter={this.handleHover} 
                 onMouseLeave={this.handleUnhover}
                 key={this.props.movie.id}>
-                <Card.Img variant="top" src={this.props.movie.poster}/>
+                <Card.Img variant="top" src={this.props.movie.poster === 'N/A' ? this.props.movie.poster = "https://www.brdtex.com/wp-content/uploads/2019/09/no-image-480x480.png": this.props.movie.poster}/>
                 <Card.Body>
                     <Card.Title> {this.props.movie.title} </Card.Title>
                     <Card.Text className="left">{this.props.movie.plot}</Card.Text>

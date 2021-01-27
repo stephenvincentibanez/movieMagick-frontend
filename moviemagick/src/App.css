@@ -97,6 +97,10 @@ div.col > img {
   resize: none;
 }
 
+.search{
+  padding: 10px;
+}
+
 span{
   display: inline-block;
 }

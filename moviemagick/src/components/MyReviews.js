@@ -10,7 +10,7 @@ const MyReviews = (props) => {
                 return(
                     <ReviewDetails 
                         review={review} 
-                        key={review.id} 
+                        key={review.id}
                         handleRemoveReview={props.handleRemoveReview} 
                         handleMovieClick={props.handleMovieClick}/>
                 )

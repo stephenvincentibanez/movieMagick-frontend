@@ -61,8 +61,9 @@ class App extends Component {
   }
 
   handleSearch = (movies) => {
+    console.log(movies.Search)
     this.setState({
-      searchMovies: movies
+      searchMovies: movies.Search
     })
   }
 
