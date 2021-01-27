@@ -16,9 +16,11 @@ class Movie extends Component {
 
     handleSubmit = (e, review) => {
         e.preventDefault()
-        console.log(this.props.user.reviews)
-        if(this.props.user.reviews.movie){
+        if(this.props.movie.users.find(u => u.username === this.props.user.username)){
             alert("You've already reviewed this movie!")
+            this.setState({
+                text: ''
+            })
         }
         else{
             axios.post('http://localhost:3001/reviews', {
