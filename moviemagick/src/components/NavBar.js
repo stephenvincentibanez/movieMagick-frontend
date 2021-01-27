@@ -8,26 +8,6 @@ import axios from 'axios'
 
 class NavBar extends Component {
 
-    state={
-        search: ''
-    }
-
-    // handleSubmit = e => {
-    //     e.preventDefault()
-        
-    //     fetch('http://www.omdbapi.com?apikey=' + APIKEY + `&s=${convertedValue}`)
-    //     console.log('searching...')
-    // }
-
-    // handleChange = e => {
-    //     fetch(`http://localhost:3001/search?search=${e.target.value}`)
-    //     .then(r => r.json())
-    //     .then(console.log)
-    //     this.setState({
-    //         search: e.target.value
-    //     })
-    // }
-
     handleLogoutClick = () => {
         axios.delete('http://localhost:3001/logout', {withCredentials: true}).then(response => {
             this.props.handleLogout()
@@ -38,7 +18,8 @@ class NavBar extends Component {
         
     render() {
         return (
-            <Navbar bg="dark" variant="dark">
+            // <Navbar bg="dark" variant="dark">
+            <Navbar>
                 <Navbar.Brand href="/">MovieMagick</Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/">Home</Nav.Link>
@@ -48,10 +29,6 @@ class NavBar extends Component {
                     <Nav.Link href='/edit_user' >Settings</Nav.Link>
                     {this.props.loggedInStatus === "LOGGED_IN" ? <Nav.Link onClick={() => {if (window.confirm('Are you sure you want to logout?')) this.handleLogoutClick()}}> Logout </Nav.Link> : null}
                 </Nav>
-                {/* <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" value={this.state.search} onChange={(e, value) => this.handleChange(e, value)}/>
-                    <Button variant="outline-info" onClick={(e, value) => this.handleSubmit(e, value)}>Search</Button>
-                </Form> */}
              </Navbar>
         );
     }
