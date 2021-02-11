@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   background-color:	#dae4ff;
-
+  /* font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 html{
@@ -77,7 +78,7 @@ img.card-img-top{
 }
 
 div.col > img {
-  width: 27rem;
+  width: 28rem;
   height: auto;
 }
 
@@ -87,7 +88,6 @@ div.col > img {
 }
 
 .registrationForm, .loginForm {
-  /* background-color: #B6C9FF; */
   background-color: aliceblue;
   padding: 10px;
   border-radius: 10px;
@@ -101,9 +101,9 @@ form.search{
   padding: 10px;
 }
 
-input.search{
+/* input.search{
   background-color: aliceblue;
-}
+} */
 
 span{
   display: inline-block;

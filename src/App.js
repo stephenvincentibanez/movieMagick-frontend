@@ -29,7 +29,6 @@ class App extends Component {
 
   checkLoginStatus(){
     axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(response => {
-      console.log('logged in?', response.data.user)
       if (response.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN'){
         this.setState({
           loggedInStatus: 'LOGGED_IN',

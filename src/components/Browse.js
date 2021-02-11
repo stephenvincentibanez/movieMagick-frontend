@@ -79,7 +79,6 @@ class Browse extends Component {
                 </div>
                 <form className="search" onSubmit={(e, value) => this.handleSubmit(e, value)}>
                     <input className="search" type="text" name="search" placeholder="Search for a movie!" value={this.state.search} onChange={(e,value) => this.handleChange(e,value)}></input>
-                    {/* <input type="submit" value="Search"/> */}
                 </form>
                 <Container className="moviesContainer">
                     <Row className="justify-content-md-center">

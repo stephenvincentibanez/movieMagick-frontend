@@ -120,7 +120,7 @@ class Movie extends Component {
 
                     </Col>
                     <Col>
-                    <img src={this.props.movie.poster}/><br/><br/>
+                        <img src={this.props.movie.poster}/><br/><br/>
                     </Col>
                 </Row>
                     <br/>
