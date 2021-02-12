@@ -33,7 +33,7 @@ class App extends Component {
         this.setState({
           loggedInStatus: 'LOGGED_IN',
           user: response.data.user
-        }, localStorage.setItem('user', JSON.stringify(response.data.user)))
+        })
       } else if (!response.data.logged_in && this.state.loggedInStatus === 'LOGGED_IN'){
         this.setState({
           loggedInStatus: 'NOT_LOGGED_IN',
