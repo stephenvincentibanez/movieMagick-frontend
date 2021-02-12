@@ -14,7 +14,7 @@ const Watchlist = (props) => {
     }
 
     const handleDelete = (watchlist) => {
-        fetch(`http://localhost:3001/watchlists/${watchlist.id}`, {
+        fetch(`https://movie-magick-api.herokuapp.com/watchlists/${watchlist.id}`, {
             method: "DELETE"
         }).then(r => r.json())
         .then(data => props.handleRemoveFromWatchlist(data.watchlist))

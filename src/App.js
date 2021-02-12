@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   checkLoginStatus(){
-    axios.get('http://localhost:3001/logged_in', { withCredentials: true }).then(response => {
+    axios.get('https://movie-magick-api.herokuapp.com/logged_in', { withCredentials: true }).then(response => {
       if (response.data.logged_in && this.state.loggedInStatus === 'NOT_LOGGED_IN'){
         this.setState({
           loggedInStatus: 'LOGGED_IN',
@@ -47,12 +47,12 @@ class App extends Component {
 
   componentDidMount(){
     this.checkLoginStatus()
-    fetch('http://localhost:3001/movies')
+    fetch('https://movie-magick-api.herokuapp.com/movies')
     .then(r => r.json())
     .then(movies => this.setState({
       movies
     }))
-    fetch('http://localhost:3001/reviews')
+    fetch('https://movie-magick-api.herokuapp.com/reviews')
     .then(r => r.json())
     .then(reviews => this.setState({
       reviews
@@ -114,7 +114,7 @@ class App extends Component {
     this.setState(prevState => ({
       user: {...prevState.user, reviews: prevState.user.reviews, review}
     }))
-    fetch('http://localhost:3001/reviews')
+    fetch('https://movie-magick-api.herokuapp.com/reviews')
         .then(r => r.json())
         .then(reviews => this.setState({
         reviews

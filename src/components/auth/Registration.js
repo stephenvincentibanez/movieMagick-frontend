@@ -20,7 +20,7 @@ class Registration extends Component {
 
     handleSubmit = e => {
         const {username, password, password_confirmation} = this.state
-        axios.post('http://localhost:3001/registrations', {
+        axios.post('https://movie-magick-api.herokuapp.com/registrations', {
             user: {
                 username: username,
                 password: password,

@@ -24,7 +24,7 @@ class Movie extends Component {
             })
         }
         else{
-            axios.post('http://localhost:3001/reviews', {
+            axios.post('https://movie-magick-api.herokuapp.com/reviews', {
                 review: {
                     movie_id: this.props.movie.id,
                     user_id: this.props.user.id,
@@ -59,7 +59,7 @@ class Movie extends Component {
     handleWatchlist = (movie) => {
         const watchlist = this.props.user.watchlists.find(m => m.movie.title === movie.title)
         if(!watchlist){
-            axios.post('http://localhost:3001/watchlists', {
+            axios.post('https://movie-magick-api.herokuapp.com/watchlists', {
                 watchlist: {user_id: this.props.user.id, movie_id: movie.id}
             },
             { withCredentials: true }
@@ -72,7 +72,7 @@ class Movie extends Component {
         })
         }
         else{
-            fetch(`http://localhost:3001/watchlists/${watchlist.id}`, {
+            fetch(`https://movie-magick-api.herokuapp.com/watchlists/${watchlist.id}`, {
                 method: "DELETE"
             }).then(r => r.json())
             .then(response => {
