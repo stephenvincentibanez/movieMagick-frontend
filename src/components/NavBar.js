@@ -6,7 +6,7 @@ import axios from 'axios'
 class NavBar extends Component {
 
     handleLogoutClick = () => {
-        axios.delete('https://movie-magick-api.herokuapp.com/logout', {withCredentials: true}).then(response => {
+        axios.delete('http://localhost:3001//logout', {withCredentials: true}).then(response => {
             this.props.handleLogout()
         }).catch(error => {
             console.log('logout error', error)

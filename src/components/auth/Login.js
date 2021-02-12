@@ -20,7 +20,7 @@ class Login extends Component {
 
     handleSubmit = (e) => {
         const {username, password} = this.state
-        axios.post('https://movie-magick-api.herokuapp.com/sessions', {
+        axios.post('http://localhost:3001//sessions', {
             user: {
                 username: username,
                 password: password

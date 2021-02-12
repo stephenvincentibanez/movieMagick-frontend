@@ -13,7 +13,7 @@ class Browse extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         const query = e.target.search.value.split(" ").join("+")
-        fetch(`https://movie-magick-api.herokuapp.com/search?search=${query}`)
+        fetch(`http://localhost:3001//search?search=${query}`)
         .then(r => r.json())
         .then(movies => this.props.handleSearch(movies))
         .then(

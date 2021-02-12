@@ -18,7 +18,7 @@ class EditUser extends Component {
         e.preventDefault()
         const {username, password, password_confirmation} = this.state
         const {id} = this.props.user
-        axios.patch(`https://movie-magick-api.herokuapp.com/users/${id}`, {
+        axios.patch(`http://localhost:3001//users/${id}`, {
             user: {
                 username: username,
                 password: password,
@@ -49,7 +49,7 @@ class EditUser extends Component {
 
     deleteUser = () => {
         const {id} = this.props.user
-        axios.delete(`https://movie-magick-api.herokuapp.com/users/${id}`)
+        axios.delete(`http://localhost:3001//users/${id}`)
         .then(response => {
             if(response.data.status === 'destroyed'){
                 this.props.history.push("/")

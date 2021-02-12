@@ -13,7 +13,7 @@ const ReviewDetails = (props) => {
     }
 
     const handleDelete = (review) => {
-        fetch(`https://movie-magick-api.herokuapp.com/reviews/${review.id}`, {
+        fetch(`http://localhost:3001//reviews/${review.id}`, {
             method: "DELETE"
         }).then(r => r.json())
         .then(data => props.handleRemoveReview(data.review))
